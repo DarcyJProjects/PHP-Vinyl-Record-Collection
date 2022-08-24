@@ -1,6 +1,6 @@
 # Darcy's Record Collection
 A simple record collection webpage made with Bootstrap 5.1 & Custom PHP Scripts.<br>
-__This isn't intended for other people to just drag and drop onto their own webserver, this is purely so I can track my changes - but of course, feel free to edit and adapt this if you please to do so.__
+__This isn't intended for other people to just drag and drop onto their own webserver, this is purely so I can track my changes - but of course, feel free to edit and adapt this if you please to do so: all I'm saying is that it might take a bit of fiddling around with to get working correctly.__
 
 ## **Hosted Site:**
 https://records.darcyjprojects.xyz
