@@ -7,7 +7,7 @@ https://records.darcyjprojects.xyz
 
 ## **Screenshots:**
 Partial screenshot as of 24/08/2022
-![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot.png)
+
 
 ## **Album Database Format:**
 It's not really a database, but lets just call it that...<br>
