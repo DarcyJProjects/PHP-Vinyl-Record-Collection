@@ -35,10 +35,12 @@ Release 1 Title:Description:t/f
 Release 2 Title:Description:t/f
 ```
 *the third index entry of t/f is to indicate whether the item is in your collection (t = yes, f = no)
+*you can add the entry "br:br" if you'd like to insert a break between items
 <br>**EXAMPLE:**
 <br>File = .\database\pm_album_list_database.txt
 ```
 McCartney (1970):f
 Red Rose Speedway (1973):t
-Flaming Pie (1997):
+br:br
+Flaming Pie (1997):t
 ```
