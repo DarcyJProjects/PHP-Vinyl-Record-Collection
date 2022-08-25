@@ -6,7 +6,8 @@ __This isn't intended for other people to just drag and drop onto their own webs
 https://records.darcyjprojects.xyz
 
 ## **Screenshots:**
-Partial screenshot as of 24/08/2022
+![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot.png)
+Updated 25/08/2022
 
 
 ## **Album Database Format:**
