@@ -103,7 +103,22 @@
                                     <path d="M9 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                                 </svg></div>
                             <div class="px-3">
-                                <h2 class="fw-bold mb-0">24</h2>
+                                <?php 
+                                    $databaseFiles = array("cs", "gh", "ls", "pm", "sp", "tb");
+                                    $albums = 0;
+
+                                    for ($i = 0; $i < count($databaseFiles); $i++)
+                                    {
+                                        $databaseFileDir = "database/" . $databaseFiles[$i] . "_album_database.txt";
+                                        $lines = count(file($databaseFileDir));
+                                        $albums = $albums + $lines;
+                                    }
+
+                                    echo "<h2 class='fw-bold mb-0'>";
+                                    echo $albums;
+                                    echo "</h2>";
+                                ?>
+                                <!--<h2 class="fw-bold mb-0">24</h2>-->
                                 <p class="mb-0">Albums</p>
                             </div>
                         </div>
@@ -115,6 +130,7 @@
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"></path>
                                 </svg></div>
                             <div class="px-3">
+                                <!--Not using PHP yet as I have not incorporated a database for these yet.--> 
                                 <h2 class="fw-bold mb-0">114</h2>
                                 <p class="mb-0">Singles/EPs</p>
                             </div>
@@ -127,7 +143,22 @@
                                     <path d="M502.7 39.02L473 9.37c-12.5-12.5-32.74-12.49-45.24 .0106l-46.24 46.37c-3.875 3.875-6.848 8.506-8.598 13.76l-12.19 36.51L284.5 182.3C272.4 173.5 259 166.5 244.4 163.1C211 155.4 177.4 162.3 154.5 185.1C145.3 194.5 138.3 206 134.3 218.6C128.3 237.1 111.1 251.3 92.14 253C68.52 255.4 46.39 264.5 29.52 281.5c-45.62 45.5-37.38 127.5 18.12 183c55.37 55.38 137.4 63.51 182.9 18c16.1-16.88 26.25-38.85 28.5-62.72c1.75-18.75 15.84-36.16 34.47-42.16c12.5-3.875 24.03-10.87 33.4-20.25c22.87-22.88 29.75-56.38 21.1-89.76c-3.375-14.63-10.39-27.99-19.14-40.11l76.25-76.26l36.53-12.17c5.125-1.75 9.894-4.715 13.77-8.59l46.36-46.29C515.2 71.72 515.2 51.52 502.7 39.02zM208 352c-26.5 0-48-21.5-48-48c0-26.5 21.5-48 48-48s47.1 21.5 47.1 48C256 330.5 234.5 352 208 352z"></path>
                                 </svg></div>
                             <div class="px-3">
-                                <h2 class="fw-bold mb-0">16</h2>
+                            <?php 
+                                    $databaseFiles = array("tb");
+                                    $albums = 0;
+                                    $singles = 9; //will make this check from a database at a later date.
+
+                                    for ($i = 0; $i < count($databaseFiles); $i++)
+                                    {
+                                        $databaseFileDir = "database/" . $databaseFiles[$i] . "_album_database.txt";
+                                        $lines = count(file($databaseFileDir));
+                                        $albums = $albums + $lines;
+                                    }
+
+                                    echo "<h2 class='fw-bold mb-0'>";
+                                    echo $albums + $singles;
+                                    echo "</h2>";
+                                ?>
                                 <p class="mb-0">Beatles Records</p>
                             </div>
                         </div>
@@ -138,7 +169,22 @@
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M22 21C23.1046 21 24 20.1046 24 19V5C24 3.89543 23.1046 3 22 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H22ZM11 5H8.98486V13H7.98511V19H12V13H11V5ZM18.0151 19H22V5H19.0151V13H18.0151V19ZM17.0151 13H16.0151V5H14V13H13V19H17.0151V13ZM6.98511 19V13H5.98486V5H3L3 19H6.98511Z" fill="currentColor"></path>
                                 </svg></div>
                             <div class="px-3">
-                                <h2 class="fw-bold mb-0">8</h2>
+                            <?php 
+                                    $databaseFiles = array("pm");
+                                    $albums = 0;
+                                    $singles = 2; //will make this check from a database at a later date.
+
+                                    for ($i = 0; $i < count($databaseFiles); $i++)
+                                    {
+                                        $databaseFileDir = "database/" . $databaseFiles[$i] . "_album_database.txt";
+                                        $lines = count(file($databaseFileDir));
+                                        $albums = $albums + $lines;
+                                    }
+
+                                    echo "<h2 class='fw-bold mb-0'>";
+                                    echo $albums + $singles;
+                                    echo "</h2>";
+                                ?>
                                 <p class="mb-0">Macca Records</p>
                             </div>
                         </div>
@@ -155,7 +201,43 @@
                 <div class="row mb-5">
                     <div class="col-md-8 col-xl-6 text-center mx-auto">
                         <h2>Paul McCartney<br>Albums</h2>
-                        <p>McCartney (1970)<br>Ram (1971)<br>Wild Life (1971)<br><strong><span style="text-decoration: line-through;">Red Rose Speedway (1973)</span></strong><br><strong><span style="text-decoration: line-through;">Band On The Run (1973)</span></strong><br>Venus and Mars (1975)<br>Wings at the Speed of Sound (1976)<br>Thrillington (1977)<br>London Town (1978)<br>Back to the Egg (1979)<br>McCartney II (1980)<br><strong><span style="text-decoration: line-through;">Tug of War (1982)</span></strong><br><strong><span style="text-decoration: line-through;">Pipes of Peace (1983)</span></strong><br>Give My Regards to Broad Street (1983)<br>Press to Play (1986)<br>Flowers in the Dirt (1989)<br>Off the Ground (1993)<br><strong><span style="text-decoration: line-through;">Flaming Pie (1997)</span></strong><br>Driving Rain (2001)<br>Chaos and Creation in the Backyard (2005)<br>Memory Almost Full (2007)<br>New (2013)<br>Egypt Station (2018)<br>McCartney III (2020)<br><br><strong><span style="text-decoration: line-through;">Wings Greatest (1978)</span></strong></p>
+
+                            <?php
+                                //[INDEXES]
+                                //0 = Title (Year)
+                                //1 = t/f: t=true=in_collection, f=false=not_in_collection
+                                //If 0 & 1 == "br" then <br> will be echoed
+                                //
+                                //Separate fields/indexes by ":"
+
+                                //CONFIG--------------------//
+                                $databaseName = "pm_album_list";
+                                $databaseDir  = "database";
+                                //--------------------------//
+
+                                $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
+                                $fileContent = file($fileDir);
+                                $lines = count(file($fileDir));
+                                
+                                echo "<p>";
+
+                                for ($n = 0; $n < $lines; $n++)
+                                {
+                                    $fileItems = explode(":",$fileContent[$n]);
+
+                                    if (str_contains($fileItems[0],"br") && str_contains($fileItems[1], "br")) {
+                                        echo "<br>";
+                                    } else if (str_contains($fileItems[1], "f")){
+                                        echo $fileItems[0];
+                                        echo "<br>";
+                                    } else {
+                                        echo "<strong>&#10004; ";
+                                        echo $fileItems[0];
+                                        echo "</strong>";
+                                        echo "<br>";
+                                    }
+                                }
+                            ?>
                     </div>
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -175,24 +257,21 @@
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
-                    $file = fopen($fileDir, "r") or die ("Unable to open " . $fileDir);
-                    $fileContent = fread($file,filesize($fileDir));
-                    fclose($file);
+                    $fileContent = file($fileDir);
+                    $lines = count(file($fileDir));
 
-                    $items = explode("|",$fileContent);
                     $imgDir = $databaseDir . "/" . $databaseName . "/";
 
-                    $n = 0;
-                    foreach ($items as $value) {
-                        $itemsItems = explode(":",$items[$n]);
+                    for ($n = 0; $n < $lines; $n++) {
+                        $fileItems = explode(":",$fileContent[$n]);
+
                         echo "<div class='col'>";
-                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $itemsItems[5] . "'>";
-                        echo "        <br><h4><strong>" . $itemsItems[0] . "</strong></h4>";
-                        echo "        <p><strong>" . $itemsItems[1] . "</strong><br>" . $itemsItems[2] . "<br>Media Condition: " . $itemsItems[3] . "<br>Sleeve Condition: " . $itemsItems[4] . "</p>";
-                        echo "        <a href='https://www.discogs.com/release/" . $itemsItems[6] . "' target='_blank'>Discogs ID: " . $itemsItems[6] . "</a>";
+                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[5] . "'>";
+                        echo "        <br><h4><strong>" . $fileItems[0] . "</strong></h4>";
+                        echo "        <p><strong>" . $fileItems[1] . "</strong><br>" . $fileItems[2] . "<br>Media Condition: " . $fileItems[3] . "<br>Sleeve Condition: " . $fileItems[4] . "</p>";
+                        echo "        <a href='https://www.discogs.com/release/" . $fileItems[6] . "' target='_blank'>Discogs ID: " . $fileItems[6] . "</a>";
                         echo "    </div>";
                         echo "</div>";
-                        $n = $n + 1;
                     }
                     ?>
                 </div>
@@ -206,8 +285,43 @@
                 <div class="row mb-5">
                     <div class="col-md-8 col-xl-6 text-center mx-auto">
                         <h2>The Beatles<br>Albums<br></h2>
-                        <p>Please Please Me (1963)<br>With the Beatles (1963)<br><strong><span style="text-decoration: line-through;">A Hard Day's Night (1964)</span></strong><br><strong><span style="text-decoration: line-through;">Beatles for Sale (1964)</span></strong><br>Help! (1965)<br><strong><span style="text-decoration: line-through;">Rubber Soul (1965)</span></strong><br>Revolver (1966)<br>Sgt. Pepper's Lonely Hearts Club Band (1967)<br>Magical Mystery Tour (1967)<br>The Beatles (AKA. The White Album) (1968)<br>Yellow Submarine (1969)<br>Abbey Road (1969)<br>Let It Be (1970)<br><br><strong><span style="text-decoration: line-through;">1962-1966 (AKA. The Red Album) (1973)</span></strong><br>1967-1970 (AKA. The Blue Album) (1973)<br><strong><span style="text-decoration: line-through;">Rock 'n' Roll Music (1976)</span></strong><br>Anthology 1 (1995)<br>Anthology 2 (1996)<br>Anthology 3 (1996)<br><strong><span style="text-decoration: line-through;">1 (2000)</span></strong><br><br><strong><span style="text-decoration: line-through;">The Beatles (CD Box Set) (2009)</span></strong><br><br><strong><span style="text-decoration: line-through;">The Beatles Christmas Album (Unofficial)</span></strong></p>
-                    </div>
+                        <?php
+                                //[INDEXES]
+                                //0 = Title (Year)
+                                //1 = t/f: t=true=in_collection, f=false=not_in_collection
+                                //If 0 & 1 == "br" then <br> will be echoed
+                                //
+                                //Separate fields/indexes by ":"
+
+                                //CONFIG--------------------//
+                                $databaseName = "tb_album_list";
+                                $databaseDir  = "database";
+                                //--------------------------//
+
+                                $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
+                                $fileContent = file($fileDir);
+                                $lines = count(file($fileDir));
+                                
+                                echo "<p>";
+
+                                for ($n = 0; $n < $lines; $n++)
+                                {
+                                    $fileItems = explode(":",$fileContent[$n]);
+
+                                    if (str_contains($fileItems[0],"br") && str_contains($fileItems[1], "br")) {
+                                        echo "<br>";
+                                    } else if (str_contains($fileItems[1], "f")){
+                                        echo $fileItems[0];
+                                        echo "<br>";
+                                    } else {
+                                        echo "<strong>&#10004; ";
+                                        echo $fileItems[0];
+                                        echo "</strong>";
+                                        echo "<br>";
+                                    }
+                                }
+                            ?>
+                        </div>
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <?php
@@ -226,24 +340,21 @@
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
-                    $file = fopen($fileDir, "r") or die ("Unable to open " . $fileDir);
-                    $fileContent = fread($file,filesize($fileDir));
-                    fclose($file);
+                    $fileContent = file($fileDir);
+                    $lines = count(file($fileDir));
 
-                    $items = explode("|",$fileContent);
                     $imgDir = $databaseDir . "/" . $databaseName . "/";
 
-                    $n = 0;
-                    foreach ($items as $value) {
-                        $itemsItems = explode(":",$items[$n]);
+                    for ($n = 0; $n < $lines; $n++) {
+                        $fileItems = explode(":",$fileContent[$n]);
+
                         echo "<div class='col'>";
-                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $itemsItems[5] . "'>";
-                        echo "        <br><h4><strong>" . $itemsItems[0] . "</strong></h4>";
-                        echo "        <p><strong>" . $itemsItems[1] . "</strong><br>" . $itemsItems[2] . "<br>Media Condition: " . $itemsItems[3] . "<br>Sleeve Condition: " . $itemsItems[4] . "</p>";
-                        echo "        <a href='https://www.discogs.com/release/" . $itemsItems[6] . "' target='_blank'>Discogs ID: " . $itemsItems[6] . "</a>";
+                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[5] . "'>";
+                        echo "        <br><h4><strong>" . $fileItems[0] . "</strong></h4>";
+                        echo "        <p><strong>" . $fileItems[1] . "</strong><br>" . $fileItems[2] . "<br>Media Condition: " . $fileItems[3] . "<br>Sleeve Condition: " . $fileItems[4] . "</p>";
+                        echo "        <a href='https://www.discogs.com/release/" . $fileItems[6] . "' target='_blank'>Discogs ID: " . $fileItems[6] . "</a>";
                         echo "    </div>";
                         echo "</div>";
-                        $n = $n + 1;
                     }
                     ?>
                 </div>
@@ -257,7 +368,42 @@
                 <div class="row mb-5">
                     <div class="col-md-8 col-xl-6 text-center mx-auto">
                         <h2>George Harrison<br>Albums</h2>
-                        <p>Wonderwall Music (1968)<br>Electronic Sound (1969)<br><strong><span style="text-decoration: line-through;">All Things Must Pass (1970)</span></strong><br>Living in the Material World (1973)<br>Dark Horse (1974)<br>Extra Texture (Read All About It) (1974)<br>Thirty Three ॐ 1/3 (1976)<br><strong><span style="text-decoration: line-through;">George Harrison (1979)</span></strong><br>Somewhere in England (1981)<br>Gone Troppo (1982)<br>Cloud Nine (1987)<br>Brainwashed (2002)<br><br><strong><span style="text-decoration: line-through;">Shankar Family ॐ Friends (1974)</span></strong></p>
+                        <?php
+                                //[INDEXES]
+                                //0 = Title (Year)
+                                //1 = t/f: t=true=in_collection, f=false=not_in_collection
+                                //If 0 & 1 == "br" then <br> will be echoed
+                                //
+                                //Separate fields/indexes by ":"
+
+                                //CONFIG--------------------//
+                                $databaseName = "gh_album_list";
+                                $databaseDir  = "database";
+                                //--------------------------//
+
+                                $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
+                                $fileContent = file($fileDir);
+                                $lines = count(file($fileDir));
+                                
+                                echo "<p>";
+
+                                for ($n = 0; $n < $lines; $n++)
+                                {
+                                    $fileItems = explode(":",$fileContent[$n]);
+
+                                    if (str_contains($fileItems[0],"br") && str_contains($fileItems[1], "br")) {
+                                        echo "<br>";
+                                    } else if (str_contains($fileItems[1], "f")){
+                                        echo $fileItems[0];
+                                        echo "<br>";
+                                    } else {
+                                        echo "<strong>&#10004; ";
+                                        echo $fileItems[0];
+                                        echo "</strong>";
+                                        echo "<br>";
+                                    }
+                                }
+                            ?>    
                     </div>
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -277,24 +423,21 @@
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
-                    $file = fopen($fileDir, "r") or die ("Unable to open " . $fileDir);
-                    $fileContent = fread($file,filesize($fileDir));
-                    fclose($file);
+                    $fileContent = file($fileDir);
+                    $lines = count(file($fileDir));
 
-                    $items = explode("|",$fileContent);
                     $imgDir = $databaseDir . "/" . $databaseName . "/";
 
-                    $n = 0;
-                    foreach ($items as $value) {
-                        $itemsItems = explode(":",$items[$n]);
+                    for ($n = 0; $n < $lines; $n++) {
+                        $fileItems = explode(":",$fileContent[$n]);
+
                         echo "<div class='col'>";
-                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $itemsItems[5] . "'>";
-                        echo "        <br><h4><strong>" . $itemsItems[0] . "</strong></h4>";
-                        echo "        <p><strong>" . $itemsItems[1] . "</strong><br>" . $itemsItems[2] . "<br>Media Condition: " . $itemsItems[3] . "<br>Sleeve Condition: " . $itemsItems[4] . "</p>";
-                        echo "        <a href='https://www.discogs.com/release/" . $itemsItems[6] . "' target='_blank'>Discogs ID: " . $itemsItems[6] . "</a>";
+                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[5] . "'>";
+                        echo "        <br><h4><strong>" . $fileItems[0] . "</strong></h4>";
+                        echo "        <p><strong>" . $fileItems[1] . "</strong><br>" . $fileItems[2] . "<br>Media Condition: " . $fileItems[3] . "<br>Sleeve Condition: " . $fileItems[4] . "</p>";
+                        echo "        <a href='https://www.discogs.com/release/" . $fileItems[6] . "' target='_blank'>Discogs ID: " . $fileItems[6] . "</a>";
                         echo "    </div>";
                         echo "</div>";
-                        $n = $n + 1;
                     }
                     ?>
                 </div>
@@ -308,7 +451,42 @@
                 <div class="row mb-5">
                     <div class="col-md-8 col-xl-6 text-center mx-auto">
                         <h2>Cat Stevens<br>Albums</h2>
-                        <p>Matthew &amp; Son (1967)<br>New Masters (1967)<br>Mona Bone Jakon (1970)<br>Tea for the Tillerman (1970)<br><strong><span style="text-decoration: line-through;">Teaser and the Firecat (1971)</span></strong><br>Catch Bull at Four (1972)<br>Foreigner (1973)<br>Buddha and the Chocolate Box (1974)<br>Numbers (1975)<br>Izitso (1977)<br>Back to Earth (1978)</p>
+                        <?php
+                                //[INDEXES]
+                                //0 = Title (Year)
+                                //1 = t/f: t=true=in_collection, f=false=not_in_collection
+                                //If 0 & 1 == "br" then <br> will be echoed
+                                //
+                                //Separate fields/indexes by ":"
+
+                                //CONFIG--------------------//
+                                $databaseName = "cs_album_list";
+                                $databaseDir  = "database";
+                                //--------------------------//
+
+                                $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
+                                $fileContent = file($fileDir);
+                                $lines = count(file($fileDir));
+                                
+                                echo "<p>";
+
+                                for ($n = 0; $n < $lines; $n++)
+                                {
+                                    $fileItems = explode(":",$fileContent[$n]);
+
+                                    if (str_contains($fileItems[0],"br") && str_contains($fileItems[1], "br")) {
+                                        echo "<br>";
+                                    } else if (str_contains($fileItems[1], "f")){
+                                        echo $fileItems[0];
+                                        echo "<br>";
+                                    } else {
+                                        echo "<strong>&#10004; ";
+                                        echo $fileItems[0];
+                                        echo "</strong>";
+                                        echo "<br>";
+                                    }
+                                }
+                            ?>
                     </div>
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -328,24 +506,21 @@
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
-                    $file = fopen($fileDir, "r") or die ("Unable to open " . $fileDir);
-                    $fileContent = fread($file,filesize($fileDir));
-                    fclose($file);
+                    $fileContent = file($fileDir);
+                    $lines = count(file($fileDir));
 
-                    $items = explode("|",$fileContent);
                     $imgDir = $databaseDir . "/" . $databaseName . "/";
 
-                    $n = 0;
-                    foreach ($items as $value) {
-                        $itemsItems = explode(":",$items[$n]);
+                    for ($n = 0; $n < $lines; $n++) {
+                        $fileItems = explode(":",$fileContent[$n]);
+
                         echo "<div class='col'>";
-                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $itemsItems[5] . "'>";
-                        echo "        <br><h4><strong>" . $itemsItems[0] . "</strong></h4>";
-                        echo "        <p><strong>" . $itemsItems[1] . "</strong><br>" . $itemsItems[2] . "<br>Media Condition: " . $itemsItems[3] . "<br>Sleeve Condition: " . $itemsItems[4] . "</p>";
-                        echo "        <a href='https://www.discogs.com/release/" . $itemsItems[6] . "' target='_blank'>Discogs ID: " . $itemsItems[6] . "</a>";
+                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[5] . "'>";
+                        echo "        <br><h4><strong>" . $fileItems[0] . "</strong></h4>";
+                        echo "        <p><strong>" . $fileItems[1] . "</strong><br>" . $fileItems[2] . "<br>Media Condition: " . $fileItems[3] . "<br>Sleeve Condition: " . $fileItems[4] . "</p>";
+                        echo "        <a href='https://www.discogs.com/release/" . $fileItems[6] . "' target='_blank'>Discogs ID: " . $fileItems[6] . "</a>";
                         echo "    </div>";
                         echo "</div>";
-                        $n = $n + 1;
                     }
                     ?>
                 </div>
@@ -359,7 +534,42 @@
                 <div class="row mb-5">
                     <div class="col-md-8 col-xl-6 text-center mx-auto">
                         <h2>The Lovin' Spoonful<br>Albums</h2>
-                        <p>Do You Believe in Magic (1965)<br>Daydream (1966)<br>Hums of the Lovin' Spoonful (1966)<br>Everything Playing (1967)<br>Revelation: Revolution '69 (1969)<br><br><strong><span style="text-decoration: line-through;">You're A Big Boy Now (1967)</span></strong><br><br><strong><span style="text-decoration: line-through;">The Very Best Of The Lovin' Spoonful (1967)</span></strong></p>
+                        <?php
+                                //[INDEXES]
+                                //0 = Title (Year)
+                                //1 = t/f: t=true=in_collection, f=false=not_in_collection
+                                //If 0 & 1 == "br" then <br> will be echoed
+                                //
+                                //Separate fields/indexes by ":"
+
+                                //CONFIG--------------------//
+                                $databaseName = "ls_album_list";
+                                $databaseDir  = "database";
+                                //--------------------------//
+
+                                $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
+                                $fileContent = file($fileDir);
+                                $lines = count(file($fileDir));
+                                
+                                echo "<p>";
+
+                                for ($n = 0; $n < $lines; $n++)
+                                {
+                                    $fileItems = explode(":",$fileContent[$n]);
+
+                                    if (str_contains($fileItems[0],"br") && str_contains($fileItems[1], "br")) {
+                                        echo "<br>";
+                                    } else if (str_contains($fileItems[1], "f")){
+                                        echo $fileItems[0];
+                                        echo "<br>";
+                                    } else {
+                                        echo "<strong>&#10004; ";
+                                        echo $fileItems[0];
+                                        echo "</strong>";
+                                        echo "<br>";
+                                    }
+                                }
+                            ?>
                     </div>
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -379,24 +589,21 @@
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
-                    $file = fopen($fileDir, "r") or die ("Unable to open " . $fileDir);
-                    $fileContent = fread($file,filesize($fileDir));
-                    fclose($file);
+                    $fileContent = file($fileDir);
+                    $lines = count(file($fileDir));
 
-                    $items = explode("|",$fileContent);
                     $imgDir = $databaseDir . "/" . $databaseName . "/";
 
-                    $n = 0;
-                    foreach ($items as $value) {
-                        $itemsItems = explode(":",$items[$n]);
+                    for ($n = 0; $n < $lines; $n++) {
+                        $fileItems = explode(":",$fileContent[$n]);
+
                         echo "<div class='col'>";
-                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $itemsItems[5] . "'>";
-                        echo "        <br><h4><strong>" . $itemsItems[0] . "</strong></h4>";
-                        echo "        <p><strong>" . $itemsItems[1] . "</strong><br>" . $itemsItems[2] . "<br>Media Condition: " . $itemsItems[3] . "<br>Sleeve Condition: " . $itemsItems[4] . "</p>";
-                        echo "        <a href='https://www.discogs.com/release/" . $itemsItems[6] . "' target='_blank'>Discogs ID: " . $itemsItems[6] . "</a>";
+                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[5] . "'>";
+                        echo "        <br><h4><strong>" . $fileItems[0] . "</strong></h4>";
+                        echo "        <p><strong>" . $fileItems[1] . "</strong><br>" . $fileItems[2] . "<br>Media Condition: " . $fileItems[3] . "<br>Sleeve Condition: " . $fileItems[4] . "</p>";
+                        echo "        <a href='https://www.discogs.com/release/" . $fileItems[6] . "' target='_blank'>Discogs ID: " . $fileItems[6] . "</a>";
                         echo "    </div>";
                         echo "</div>";
-                        $n = $n + 1;
                     }
                     ?>
                 </div>
@@ -410,7 +617,43 @@
                 <div class="row mb-5">
                     <div class="col-md-8 col-xl-6 text-center mx-auto">
                         <h2>Sparks<br>Albums</h2>
-                        <p>I'm not going to list them all as they have released a lot!<br><br><strong><span style="text-decoration: line-through;">Kimono My House</span></strong></p>
+                        <p>I'm not going to list them all as they have released a lot!<br><br></p>
+                        <?php
+                                //[INDEXES]
+                                //0 = Title (Year)
+                                //1 = t/f: t=true=in_collection, f=false=not_in_collection
+                                //If 0 & 1 == "br" then <br> will be echoed
+                                //
+                                //Separate fields/indexes by ":"
+
+                                //CONFIG--------------------//
+                                $databaseName = "sp_album_list";
+                                $databaseDir  = "database";
+                                //--------------------------//
+
+                                $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
+                                $fileContent = file($fileDir);
+                                $lines = count(file($fileDir));
+                                
+                                echo "<p>";
+
+                                for ($n = 0; $n < $lines; $n++)
+                                {
+                                    $fileItems = explode(":",$fileContent[$n]);
+
+                                    if (str_contains($fileItems[0],"br") && str_contains($fileItems[1], "br")) {
+                                        echo "<br>";
+                                    } else if (str_contains($fileItems[1], "f")){
+                                        echo $fileItems[0];
+                                        echo "<br>";
+                                    } else {
+                                        echo "<strong>&#10004; ";
+                                        echo $fileItems[0];
+                                        echo "</strong>";
+                                        echo "<br>";
+                                    }
+                                }
+                            ?>
                     </div>
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -430,24 +673,21 @@
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
-                    $file = fopen($fileDir, "r") or die ("Unable to open " . $fileDir);
-                    $fileContent = fread($file,filesize($fileDir));
-                    fclose($file);
+                    $fileContent = file($fileDir);
+                    $lines = count(file($fileDir));
 
-                    $items = explode("|",$fileContent);
                     $imgDir = $databaseDir . "/" . $databaseName . "/";
 
-                    $n = 0;
-                    foreach ($items as $value) {
-                        $itemsItems = explode(":",$items[$n]);
+                    for ($n = 0; $n < $lines; $n++) {
+                        $fileItems = explode(":",$fileContent[$n]);
+
                         echo "<div class='col'>";
-                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $itemsItems[5] . "'>";
-                        echo "        <br><h4><strong>" . $itemsItems[0] . "</strong></h4>";
-                        echo "        <p><strong>" . $itemsItems[1] . "</strong><br>" . $itemsItems[2] . "<br>Media Condition: " . $itemsItems[3] . "<br>Sleeve Condition: " . $itemsItems[4] . "</p>";
-                        echo "        <a href='https://www.discogs.com/release/" . $itemsItems[6] . "' target='_blank'>Discogs ID: " . $itemsItems[6] . "</a>";
+                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[5] . "'>";
+                        echo "        <br><h4><strong>" . $fileItems[0] . "</strong></h4>";
+                        echo "        <p><strong>" . $fileItems[1] . "</strong><br>" . $fileItems[2] . "<br>Media Condition: " . $fileItems[3] . "<br>Sleeve Condition: " . $fileItems[4] . "</p>";
+                        echo "        <a href='https://www.discogs.com/release/" . $fileItems[6] . "' target='_blank'>Discogs ID: " . $fileItems[6] . "</a>";
                         echo "    </div>";
                         echo "</div>";
-                        $n = $n + 1;
                     }
                     ?>
                 </div>
@@ -467,41 +707,38 @@
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
             <?php
-            //Indexes:
-            //0 = Title
-            //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-            //2 = Record Label and Identifying number
-            //3 = Media Condition
-            //4 = Sleeve Condition
-            //5 = image file name in /assets/img/ including file extension
-            //6 = discogs id
+                    //Indexes:
+                    //0 = Title
+                    //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
+                    //2 = Record Label and Identifying number
+                    //3 = Media Condition
+                    //4 = Sleeve Condition
+                    //5 = image file name in /assets/img/ including file extension
+                    //6 = discogs id
 
-            //CONFIG--------------------//
-            $databaseName = "fav_singles_eps";
-            $databaseDir  = "database";
-            //--------------------------//
+                    //CONFIG--------------------//
+                    $databaseName = "fav_singles_eps";
+                    $databaseDir  = "database";
+                    //--------------------------//
 
-            $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
-            $file = fopen($fileDir, "r") or die ("Unable to open " . $fileDir);
-            $fileContent = fread($file,filesize($fileDir));
-            fclose($file);
+                    $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
+                    $fileContent = file($fileDir);
+                    $lines = count(file($fileDir));
 
-            $items = explode("|",$fileContent);
-            $imgDir = $databaseDir . "/" . $databaseName . "/";
+                    $imgDir = $databaseDir . "/" . $databaseName . "/";
 
-            $n = 0;
-            foreach ($items as $value) {
-                $itemsItems = explode(":",$items[$n]);
-                echo "<div class='col'>";
-                echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $itemsItems[5] . "'>";
-                echo "        <br><h4><strong>" . $itemsItems[0] . "</strong></h4>";
-                echo "        <p><strong>" . $itemsItems[1] . "</strong><br>" . $itemsItems[2] . "<br>Media Condition: " . $itemsItems[3] . "<br>Sleeve Condition: " . $itemsItems[4] . "</p>";
-                echo "        <a href='https://www.discogs.com/release/" . $itemsItems[6] . "' target='_blank'>Discogs ID: " . $itemsItems[6] . "</a>";
-                echo "    </div>";
-                echo "</div>";
-                $n = $n + 1;
-            }
-            ?>
+                    for ($n = 0; $n < $lines; $n++) {
+                        $fileItems = explode(":",$fileContent[$n]);
+
+                        echo "<div class='col'>";
+                        echo "    <div><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[5] . "'>";
+                        echo "        <br><h4><strong>" . $fileItems[0] . "</strong></h4>";
+                        echo "        <p><strong>" . $fileItems[1] . "</strong><br>" . $fileItems[2] . "<br>Media Condition: " . $fileItems[3] . "<br>Sleeve Condition: " . $fileItems[4] . "</p>";
+                        echo "        <a href='https://www.discogs.com/release/" . $fileItems[6] . "' target='_blank'>Discogs ID: " . $fileItems[6] . "</a>";
+                        echo "    </div>";
+                        echo "</div>";
+                    }
+                    ?>
             </div>
         </div>
         </section>

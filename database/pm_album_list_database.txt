@@ -1,0 +1,26 @@
+McCartney (1970):f
+Ram (1971):f
+Wild Life (1971):f
+Red Rose Speedway (1973):t
+Band On The Run (1973):t
+Venus and Mars (1975):f
+Wings at the Speed of Sound (1976):f
+Thrillington (1977):f
+London Town (1978):f
+Back to the Egg (1979):f
+McCartney II (1980):f
+Tug of War (1982):t
+Pipes of Peace (1983):t
+Give My Regards to Broad Street (1983):f
+Press to Play (1986):f
+Flowers in the Dirt (1989):f
+Off the Ground (1993):f
+Flaming Pie (1997):t
+Driving Rain (2001):f
+Chaos and Creation in the Backyard (2005):f
+Memory Almost Full (2007):f
+New (2013):f
+Egypt Station (2018):f
+McCartney III (2020):f
+br:br
+Wings Greatest (1978):t
