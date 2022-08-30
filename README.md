@@ -8,7 +8,7 @@ https://records.darcyjprojects.xyz
 
 ## **Screenshots:**
 New Feature - Secondary Image on Hover:
-![Hover Image](https://records.darcyjprojects.xyz/assets/img/demogif_30082022_1.gif)
+https://records.darcyjprojects.xyz/assets/img/demogif_30082022_1.gif
 
 Partial Screenshot:
 ![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot_30082022_3.png)
