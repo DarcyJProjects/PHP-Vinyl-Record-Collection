@@ -1,0 +1,16 @@
+ARTIST:SUBTITLE:TITLE:DESCRIPTION:IMAGENAME.extension:DISCOGS-ID
+Paul McCartney:LP:Ram:Released 1971:ram.jpg:92517
+Paul McCartney:LP:Give My Regards to Broad Street:Released 1983:givemyregards.jpg:93692
+Paul McCartney:LP:Chaos and Creation in the Backyard:Released 2005:chaosandcreation.jpg:39993
+Paul McCartney:Box Set:McCartney I / II / III:Released 1971:mccartney123.jpg:27391251
+The Beatles:LP:Please Please Me:Released 1963:pleasepleaseme.jpeg:45362
+The Beatles:LP:Revolver:Released 1966:revolver.jpeg:45284
+The Beatles:LP:Abbey Road:Released 1969:abbeyroad.jpeg:24047
+George Harrison:LP:Living in the Material World:Released 1973:livingmaterial.jpg:56051
+George Harrison:LP:Dark Horse:Released 1974:darkhorse.jpg:56066
+George Harrison:LP:Thirty Three ॐ 1/3:Released 1976:33third.jpg:74914
+George Harrison:LP:Somewhere in England:Released 1981:somewhereinengland.jpg:74969
+George Harrison:LP:Cloud Nine:Released 1987:cloudnine.jpg:74960
+George Harrison:LP:Brainwashed:Released 2002:brainwashed.jpg:124223
+Cat Stevens:LP:Mona Bone Jakon:Released 1970:monabonejakon.jpg:37089
+Cat Stevens:LP:Tea for the Tillerman:Released 1970:teaforthetillerman.jpg:37103
