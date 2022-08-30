@@ -1,4 +1,4 @@
-SUBTITLE:TITLE:DESCRIPTION:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME.extension:DISCOGS-ID:NEW?(t/f)
-7" Single 45RPM:George Harrison - My Sweet Lord:1971 UK Release 45 RPM:Apple Records - R 5884:VG+:VG:gh_mysweetlord.jpg:8501940:f
-7" EP 45RPM:The Seekers - Georgy Girl:1968 Australian Release 45 RPM:Columbia - SEGO 70150:VG+:VG:ts_georgygirl.jpg:5158632:f
-7" Single 45RPM:Wings - Mull of Kintyre:1977 Australian Release 45RPM:Capitol Records/MPL - A-11607:VG+:VG+ (front), G+ (rear):pm_mullofkintyre.jpg:860397:f
+SUBTITLE:TITLE:DESCRIPTION:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME:IMG_EXT:DISCOGS-ID:NEW?(t/f)
+7" Single 45RPM:George Harrison - My Sweet Lord:1971 UK Release 45 RPM:Apple Records - R 5884:VG+:VG:gh_mysweetlord:.jpg:8501940:f
+7" EP 45RPM:The Seekers - Georgy Girl:1968 Australian Release 45 RPM:Columbia - SEGO 70150:VG+:VG:ts_georgygirl:.jpg:5158632:f
+7" Single 45RPM:Wings - Mull of Kintyre:1977 Australian Release 45RPM:Capitol Records/MPL - A-11607:VG+:VG+ (front), G+ (rear):pm_mullofkintyre:.jpg:860397:f

@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script> <!--JQUERY for img hover-->
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="assets/css/Stats-icons.css">
 </head>
@@ -35,6 +40,11 @@
                 <div class="avatar" style="background: url(&quot;assets/img/avatars/avatar.jpg&quot;);"></div>
                 <div class="about-me">
                     <p>Hello! Here's the page I use to keep track of my vinyl record collection.</p>
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>New Feature!</strong>  You can now hover over images to see a secondary image!
+                    </div>
+                    </div>
                     <!--<img src="assets/img/paulmccartney_banner.jpg" width="500">-->
                 </div>
             </div>
@@ -207,15 +217,6 @@
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                     <?php
-                    //Indexes:
-                    //0 = Title
-                    //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-                    //2 = Record Label and Identifying number
-                    //3 = Media Condition
-                    //4 = Sleeve Condition
-                    //5 = image file name in /assets/img/ including file extension
-                    //6 = discogs id
-
                     //CONFIG--------------------//
                     $databaseName = "pm_album";
                     $databaseDir  = "database";
@@ -234,16 +235,29 @@
 
                         echo "<div class='col'>";
                         echo "    <div class='card'>";
-                        echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
+                        
+                        echo "         <div class='card-body p-4'><img id='" . $fileItems[8] . $n . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . $fileItems[7] . "' onmouseover='onHover" . $fileItems[8] . $n . "();' onmouseout='offHover" . $fileItems[8] . $n . "();'>";
+                        echo "<script>\n";
+                        echo "function onHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . "_b" . $fileItems[7] . "');\n";
+                        echo "}\n";
+
+                        echo "function offHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . $fileItems[7] . "');\n";
+                        echo "}\n";
+                        echo "</script>\n";
+                        
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
                         echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
-                        if (str_contains($fileItems[8], "t")){
+                        if (str_contains($fileItems[9], "t")){
                             echo "&nbsp&nbsp";
                             echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
                         }
                         echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
-                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
+                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[8] . "' target='_blank'>Discogs ID: " . $fileItems[8] . "</a>";
                         echo "         </div>";
                         echo "     </div>";
                         echo "</div>";
@@ -265,15 +279,6 @@
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <?php
-                    //Indexes:
-                    //0 = Title
-                    //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-                    //2 = Record Label and Identifying number
-                    //3 = Media Condition
-                    //4 = Sleeve Condition
-                    //5 = image file name in /assets/img/ including file extension
-                    //6 = discogs id
-
                     //CONFIG--------------------//
                     $databaseName = "tb_album";
                     $databaseDir  = "database";
@@ -292,16 +297,29 @@
 
                         echo "<div class='col'>";
                         echo "    <div class='card'>";
-                        echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
+                        
+                        echo "         <div class='card-body p-4'><img id='" . $fileItems[8] . $n . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . $fileItems[7] . "' onmouseover='onHover" . $fileItems[8] . $n . "();' onmouseout='offHover" . $fileItems[8] . $n . "();'>";
+                        echo "<script>\n";
+                        echo "function onHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . "_b" . $fileItems[7] . "');\n";
+                        echo "}\n";
+
+                        echo "function offHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . $fileItems[7] . "');\n";
+                        echo "}\n";
+                        echo "</script>\n";
+                        
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
                         echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
-                        if (str_contains($fileItems[8], "t")){
+                        if (str_contains($fileItems[9], "t")){
                             echo "&nbsp&nbsp";
                             echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
                         }
                         echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
-                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
+                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[8] . "' target='_blank'>Discogs ID: " . $fileItems[8] . "</a>";
                         echo "         </div>";
                         echo "     </div>";
                         echo "</div>";
@@ -322,15 +340,6 @@
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <?php
-                    //Indexes:
-                    //0 = Title
-                    //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-                    //2 = Record Label and Identifying number
-                    //3 = Media Condition
-                    //4 = Sleeve Condition
-                    //5 = image file name in /assets/img/ including file extension
-                    //6 = discogs id
-
                     //CONFIG--------------------//
                     $databaseName = "gh_album";
                     $databaseDir  = "database";
@@ -349,16 +358,29 @@
 
                         echo "<div class='col'>";
                         echo "    <div class='card'>";
-                        echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
+                        
+                        echo "         <div class='card-body p-4'><img id='" . $fileItems[8] . $n . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . $fileItems[7] . "' onmouseover='onHover" . $fileItems[8] . $n . "();' onmouseout='offHover" . $fileItems[8] . $n . "();'>";
+                        echo "<script>\n";
+                        echo "function onHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . "_b" . $fileItems[7] . "');\n";
+                        echo "}\n";
+
+                        echo "function offHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . $fileItems[7] . "');\n";
+                        echo "}\n";
+                        echo "</script>\n";
+                        
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
                         echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
-                        if (str_contains($fileItems[8], "t")){
+                        if (str_contains($fileItems[9], "t")){
                             echo "&nbsp&nbsp";
                             echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
                         }
                         echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
-                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
+                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[8] . "' target='_blank'>Discogs ID: " . $fileItems[8] . "</a>";
                         echo "         </div>";
                         echo "     </div>";
                         echo "</div>";
@@ -379,15 +401,6 @@
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <?php
-                    //Indexes:
-                    //0 = Title
-                    //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-                    //2 = Record Label and Identifying number
-                    //3 = Media Condition
-                    //4 = Sleeve Condition
-                    //5 = image file name in /assets/img/ including file extension
-                    //6 = discogs id
-
                     //CONFIG--------------------//
                     $databaseName = "cs_album";
                     $databaseDir  = "database";
@@ -406,16 +419,29 @@
 
                         echo "<div class='col'>";
                         echo "    <div class='card'>";
-                        echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
+                        
+                        echo "         <div class='card-body p-4'><img id='" . $fileItems[8] . $n . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . $fileItems[7] . "' onmouseover='onHover" . $fileItems[8] . $n . "();' onmouseout='offHover" . $fileItems[8] . $n . "();'>";
+                        echo "<script>\n";
+                        echo "function onHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . "_b" . $fileItems[7] . "');\n";
+                        echo "}\n";
+
+                        echo "function offHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . $fileItems[7] . "');\n";
+                        echo "}\n";
+                        echo "</script>\n";
+                        
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
                         echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
-                        if (str_contains($fileItems[8], "t")){
+                        if (str_contains($fileItems[9], "t")){
                             echo "&nbsp&nbsp";
                             echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
                         }
                         echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
-                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
+                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[8] . "' target='_blank'>Discogs ID: " . $fileItems[8] . "</a>";
                         echo "         </div>";
                         echo "     </div>";
                         echo "</div>";
@@ -436,15 +462,6 @@
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <?php
-                    //Indexes:
-                    //0 = Title
-                    //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-                    //2 = Record Label and Identifying number
-                    //3 = Media Condition
-                    //4 = Sleeve Condition
-                    //5 = image file name in /assets/img/ including file extension
-                    //6 = discogs id
-
                     //CONFIG--------------------//
                     $databaseName = "ls_album";
                     $databaseDir  = "database";
@@ -463,16 +480,29 @@
 
                         echo "<div class='col'>";
                         echo "    <div class='card'>";
-                        echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
+                        
+                        echo "         <div class='card-body p-4'><img id='" . $fileItems[8] . $n . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . $fileItems[7] . "' onmouseover='onHover" . $fileItems[8] . $n . "();' onmouseout='offHover" . $fileItems[8] . $n . "();'>";
+                        echo "<script>\n";
+                        echo "function onHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . "_b" . $fileItems[7] . "');\n";
+                        echo "}\n";
+
+                        echo "function offHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . $fileItems[7] . "');\n";
+                        echo "}\n";
+                        echo "</script>\n";
+                        
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
                         echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
-                        if (str_contains($fileItems[8], "t")){
+                        if (str_contains($fileItems[9], "t")){
                             echo "&nbsp&nbsp";
                             echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
                         }
                         echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
-                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
+                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[8] . "' target='_blank'>Discogs ID: " . $fileItems[8] . "</a>";
                         echo "         </div>";
                         echo "     </div>";
                         echo "</div>";
@@ -493,15 +523,6 @@
                 </div>
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <?php
-                    //Indexes:
-                    //0 = Title
-                    //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-                    //2 = Record Label and Identifying number
-                    //3 = Media Condition
-                    //4 = Sleeve Condition
-                    //5 = image file name in /assets/img/ including file extension
-                    //6 = discogs id
-
                     //CONFIG--------------------//
                     $databaseName = "sp_album";
                     $databaseDir  = "database";
@@ -520,16 +541,29 @@
 
                         echo "<div class='col'>";
                         echo "    <div class='card'>";
-                        echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
+                        
+                        echo "         <div class='card-body p-4'><img id='" . $fileItems[8] . $n . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . $fileItems[7] . "' onmouseover='onHover" . $fileItems[8] . $n . "();' onmouseout='offHover" . $fileItems[8] . $n . "();'>";
+                        echo "<script>\n";
+                        echo "function onHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . "_b" . $fileItems[7] . "');\n";
+                        echo "}\n";
+
+                        echo "function offHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . $fileItems[7] . "');\n";
+                        echo "}\n";
+                        echo "</script>\n";
+                        
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
                         echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
-                        if (str_contains($fileItems[8], "t")){
+                        if (str_contains($fileItems[9], "t")){
                             echo "&nbsp&nbsp";
                             echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
                         }
                         echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
-                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
+                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[8] . "' target='_blank'>Discogs ID: " . $fileItems[8] . "</a>";
                         echo "         </div>";
                         echo "     </div>";
                         echo "</div>";
@@ -552,15 +586,6 @@
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
             <?php
-                    //Indexes:
-                    //0 = Title
-                    //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-                    //2 = Record Label and Identifying number
-                    //3 = Media Condition
-                    //4 = Sleeve Condition
-                    //5 = image file name in /assets/img/ including file extension
-                    //6 = discogs id
-
                     //CONFIG--------------------//
                     $databaseName = "fav_singles_eps";
                     $databaseDir  = "database";
@@ -579,16 +604,29 @@
 
                         echo "<div class='col'>";
                         echo "    <div class='card'>";
-                        echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
+                        
+                        echo "         <div class='card-body p-4'><img id='" . $fileItems[8] . $n . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . $fileItems[7] . "' onmouseover='onHover" . $fileItems[8] . $n . "();' onmouseout='offHover" . $fileItems[8] . $n . "();'>";
+                        echo "<script>\n";
+                        echo "function onHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . "_b" . $fileItems[7] . "');\n";
+                        echo "}\n";
+
+                        echo "function offHover" . $fileItems[8] . $n . "()\n";
+                        echo "{\n";
+                        echo "    $('#" . $fileItems[8] . $n . "').attr('src', '" . $imgDir . $fileItems[6] . $fileItems[7] . "');\n";
+                        echo "}\n";
+                        echo "</script>\n";
+                        
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
                         echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
-                        if (str_contains($fileItems[8], "t")){
+                        if (str_contains($fileItems[9], "t")){
                             echo "&nbsp&nbsp";
                             echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
                         }
                         echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
-                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
+                        echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[8] . "' target='_blank'>Discogs ID: " . $fileItems[8] . "</a>";
                         echo "         </div>";
                         echo "     </div>";
                         echo "</div>";
@@ -655,18 +693,10 @@
             <div class="container py-4 py-xl-5" id="wishlist">
                 <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <?php
-                //Indexes:
-                //0 = Title
-                //1 = Description (Year, Stereo/Mono, Country, Extra Details, "Release")
-                //2 = Record Label and Identifying number
-                //3 = Media Condition
-                //4 = Sleeve Condition
-                //5 = image file name in /assets/img/ including file extension
-                //6 = discogs id
-
                 //CONFIG--------------------//
                 $databaseName = "wishlist";
                 $databaseDir  = "database";
+                $newBadgeText = "New!";
                 //--------------------------//
 
                 $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
@@ -681,11 +711,29 @@
 
                     echo "<div class='col'>";
                     echo "    <div class='card'>";
-                    echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[4] . "'>";
+
+                    echo "         <div class='card-body p-4'><img id='" . $fileItems[6] . $n . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[4] . $fileItems[5] . "' onmouseover='onHover" . $fileItems[6] . $n . "();' onmouseout='offHover" . $fileItems[6] . $n . "();'>";
+                    echo "<script>\n";
+                    echo "function onHover" . $fileItems[6] . (string)$n . "()\n";
+                    echo "{\n";
+                    echo "    $('#" . $fileItems[6] . $n . "').attr('src', '" . $imgDir . $fileItems[4] . "_b" . $fileItems[5] . "');\n";
+                    echo "}\n";
+
+                    echo "function offHover" . $fileItems[6] . $n . "()\n";
+                    echo "{\n";
+                    echo "    $('#" . $fileItems[6] . $n . "').attr('src', '" . $imgDir . $fileItems[4] . $fileItems[5] . "');\n";
+                    echo "}\n";
+                    echo "</script>\n";
+
                     echo "             <br><h4 class='card-title'><strong>" . $fileItems[2] . "</strong></h4>";
-                    echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . " - " . $fileItems[1] . "</h6>";
+                    echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . " - " . $fileItems[1];
+                    if (str_contains($fileItems[7], "t")){
+                        echo "&nbsp&nbsp";
+                        echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
+                    }
+                    echo "</h6>";
                     echo "             <p class='card-text'>" . $fileItems[3] . "</p>";
-                    echo "             <a class='card-text' href='https://www.discogs.com/master/" . $fileItems[5] . "' target='_blank'>Discogs ID: " . $fileItems[5] . "</a>";
+                    echo "             <a class='card-text' href='https://www.discogs.com/master/" . $fileItems[6] . "' target='_blank'>Discogs ID: " . $fileItems[6] . "</a>";
                     echo "         </div>";
                     echo "     </div>";
                     echo "</div>";

@@ -7,5 +7,8 @@ Website Not Updated To Latest Version Yet! - Need to re-install PHP on the webse
 https://records.darcyjprojects.xyz
 
 ## **Screenshots:**
+New Feature - Secondary Image on Hover:
+![Hover Image](https://records.darcyjprojects.xyz/assets/img/demogif_300822_1.gif)
+
 Partial Screenshot:
-![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot_30082022_2.png)
+![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot_30082022_3.png)
