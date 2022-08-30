@@ -9,4 +9,3 @@ https://records.darcyjprojects.xyz
 ## **Screenshots:**
 Partial Screenshot:
 ![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot_30082022_1.png)
-Updated 25/08/2022
