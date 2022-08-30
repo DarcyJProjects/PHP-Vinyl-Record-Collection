@@ -219,6 +219,7 @@
                     //CONFIG--------------------//
                     $databaseName = "pm_album";
                     $databaseDir  = "database";
+                    $newBadgeText = "New!";
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
@@ -235,7 +236,12 @@
                         echo "    <div class='card'>";
                         echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
-                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . "</h6>";
+                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
+                        if (str_contains($fileItems[8], "t")){
+                            echo "&nbsp&nbsp";
+                            echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
+                        }
+                        echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
                         echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
                         echo "         </div>";
@@ -271,6 +277,7 @@
                     //CONFIG--------------------//
                     $databaseName = "tb_album";
                     $databaseDir  = "database";
+                    $newBadgeText = "New!";
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
@@ -287,7 +294,12 @@
                         echo "    <div class='card'>";
                         echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
-                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . "</h6>";
+                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
+                        if (str_contains($fileItems[8], "t")){
+                            echo "&nbsp&nbsp";
+                            echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
+                        }
+                        echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
                         echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
                         echo "         </div>";
@@ -322,6 +334,7 @@
                     //CONFIG--------------------//
                     $databaseName = "gh_album";
                     $databaseDir  = "database";
+                    $newBadgeText = "New!";
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
@@ -338,7 +351,12 @@
                         echo "    <div class='card'>";
                         echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
-                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . "</h6>";
+                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
+                        if (str_contains($fileItems[8], "t")){
+                            echo "&nbsp&nbsp";
+                            echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
+                        }
+                        echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
                         echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
                         echo "         </div>";
@@ -373,6 +391,7 @@
                     //CONFIG--------------------//
                     $databaseName = "cs_album";
                     $databaseDir  = "database";
+                    $newBadgeText = "New!";
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
@@ -389,7 +408,12 @@
                         echo "    <div class='card'>";
                         echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
-                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . "</h6>";
+                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
+                        if (str_contains($fileItems[8], "t")){
+                            echo "&nbsp&nbsp";
+                            echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
+                        }
+                        echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
                         echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
                         echo "         </div>";
@@ -424,6 +448,7 @@
                     //CONFIG--------------------//
                     $databaseName = "ls_album";
                     $databaseDir  = "database";
+                    $newBadgeText = "New!";
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
@@ -440,7 +465,12 @@
                         echo "    <div class='card'>";
                         echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
-                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . "</h6>";
+                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
+                        if (str_contains($fileItems[8], "t")){
+                            echo "&nbsp&nbsp";
+                            echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
+                        }
+                        echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
                         echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
                         echo "         </div>";
@@ -475,6 +505,7 @@
                     //CONFIG--------------------//
                     $databaseName = "sp_album";
                     $databaseDir  = "database";
+                    $newBadgeText = "New!";
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
@@ -491,7 +522,12 @@
                         echo "    <div class='card'>";
                         echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
-                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . "</h6>";
+                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
+                        if (str_contains($fileItems[8], "t")){
+                            echo "&nbsp&nbsp";
+                            echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
+                        }
+                        echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
                         echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
                         echo "         </div>";
@@ -528,6 +564,7 @@
                     //CONFIG--------------------//
                     $databaseName = "fav_singles_eps";
                     $databaseDir  = "database";
+                    $newBadgeText = "New!";
                     //--------------------------//
 
                     $fileDir = $databaseDir . "/" . $databaseName . "_database.txt";
@@ -544,7 +581,12 @@
                         echo "    <div class='card'>";
                         echo "         <div class='card-body p-4'><img class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $fileItems[6] . "'>";
                         echo "             <br><h4 class='card-title'><strong>" . $fileItems[1] . "</strong></h4>";
-                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0] . "</h6>";
+                        echo "             <h6 class='text-muted card-subtitle mb-2'>" . $fileItems[0];
+                        if (str_contains($fileItems[8], "t")){
+                            echo "&nbsp&nbsp";
+                            echo "<span class='badge bg-info'>" . $newBadgeText . "</span>";
+                        }
+                        echo "</h6>";
                         echo "             <p class='card-text'><strong>" . $fileItems[2] . "</strong><br>" . $fileItems[3] . "<br>Media Condition: " . $fileItems[4] . "<br>Sleeve Condition: " . $fileItems[5] . "</p>";
                         echo "             <a class='card-text' href='https://www.discogs.com/release/" . $fileItems[7] . "' target='_blank'>Discogs ID: " . $fileItems[7] . "</a>";
                         echo "         </div>";
@@ -655,7 +697,7 @@
     </main>
     
     <footer class="text-center py-4" style="background: var(--bs-gray-100);">
-        
+
     <div class="col">
         <ul class="list-inline my-2">
             <li class="list-inline-item me-4"></li>

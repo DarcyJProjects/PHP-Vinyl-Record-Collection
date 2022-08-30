@@ -1,2 +1,2 @@
-SUBTITLE:TITLE:DESCRIPTION:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME.extension:DISCOGS-ID
-Gatefold LP:Teaser and the Firecat:1976 Stereo West German Release:Island Records - 85 389 XOT:NM+:VG+:teaserandthefirecat.jpg:1242008
+SUBTITLE:TITLE:DESCRIPTION:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME.extension:DISCOGS-ID:NEW?(t/f)
+Gatefold LP:Teaser and the Firecat:1976 Stereo West German Release:Island Records - 85 389 XOT:NM+:VG+:teaserandthefirecat.jpg:1242008:f
