@@ -7,8 +7,11 @@ Website Not Updated To Latest Version Yet! - Need to re-install PHP on the webse
 https://records.darcyjprojects.xyz
 
 ## **Screenshots:**
+New Feature - View Record Page for albums:
+![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot_31082022_1B.png)
+
 New Feature - Secondary Image on Hover:
 https://records.darcyjprojects.xyz/assets/img/demogif_30082022_1.gif
 
 Partial Screenshot:
-![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot_30082022_3.png)
+![Demo Screenshot](https://records.darcyjprojects.xyz/assets/img/demoscreenshot_30082022_1.png)
