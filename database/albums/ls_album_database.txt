@@ -1,3 +1,5 @@
-SUBTITLE:TITLE:DESCRIPTION:IDENTIFIER:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME:IMG_EXT:DISCOGS-ID:NEW?(t/f):N of Images:
-LP:You're A Big Boy Now:1967 ORIGINAL Mono US Release:Kama Sutra - KLP-8058:M:M:youreabigboynow:.jpg:4601607:f:4:
-Compilation Album:The Very Best Of The Lovin' Spoonful:19?? US Release:Kama Sutra - KSBS 2013:VG:VG (hole punched cover):theverybestofthelovinspoonful:.jpg:1280774:f:4:
+SUBTITLE:TITLE:DESCRIPTION:IDENTIFIER:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME:IMG_EXT:DISCOGS-ID:NEW?(t/f):N of Images:Date Added to Collection:
+The Lovin' Spoonful
+null
+LP:You're A Big Boy Now:1967 ORIGINAL Mono US Release:Kama Sutra - KLP-8058:M:M:youreabigboynow:.jpg:4601607:f:4:04/06/2022:
+Compilation Album:The Very Best Of:19?? US Release:Kama Sutra - KSBS 2013:VG:VG (hole punched cover):theverybestofthelovinspoonful:.jpg:1280774:f:4:?????EBAY:

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<!-- START HEAD -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="assets/css/Stats-icons.css">
 </head>
-
+<!-- END HEAD -->
+<!-- START BODY -->
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
         <div class="container"><img src="favicon.png" width="50" height="50">&nbsp&nbsp&nbsp&nbsp<a class="navbar-brand logo" href="#">Darcy's Record Collection</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -29,11 +30,13 @@
                     <li class="nav-item"><a class="nav-link active" href="#stats">Stats</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#albums">Albums</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#favsingleseps">Fav Singles/EPs</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#other">Other Formats</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#wishlist">Wishlist</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- START ABOUT SECTION -->
     <main class="page lanidng-page" id="home">
         <section class="portfolio-block block-intro">
             <div class="container">
@@ -42,13 +45,15 @@
                     <p>Hello! Here's the page I use to keep track of my vinyl record collection.</p>
                     <div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>New Features!</strong>  For albums, you can now click on the title to open a new page to view all it's images!<br>You can also now hover over images on the main page to see a secondary image!
+                        <strong>New Features!</strong>  For albums, you can now click on the title to open a new page to view all it's images!<br>You can also now hover over images on the main page to see a secondary image!<br>Date collected is now added for all albums! (Visible on the secondary page for the releases)
                     </div>
                     </div>
                     <!--<img src="assets/img/paulmccartney_banner.jpg" width="500">-->
                 </div>
             </div>
         </section>
+    <!-- END ABOUT SECTION -->
+    <!-- START FAV ARTISTS SECTION -->
         <section class="portfolio-block photography" style="background: var(--bs-gray-100);">
             <div class="container py-4 py-xl-5">
                 <div class="row mb-5">
@@ -98,6 +103,8 @@
                 </div>
             </div>
         </section>
+    <!-- END FAV ARTISTS SECTION -->
+    <!-- START STATS SECTION -->
         <section class="portfolio-block photography">
             <div class="container py-4 py-xl-5">
                 <div class="row mb-5">
@@ -116,8 +123,11 @@
                                 </svg></div>
                             <div class="px-3">
                                 <?php 
-                                    $databaseDir = "database";
-                                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
+                                    $configFileName = "config.conf";
+                                    $configDBExtension = explode("|",file($configFileName)[0])[0];
+                                    $configNewBadgeText = explode("|",file($configFileName)[1])[0];
+                                    $configDBStartLine = explode("|",file($configFileName)[2])[0];
+                                    $configDBDir = explode("|",file($configFileName)[3])[0];
 
                                     $databaseFiles = array("cs", "gh", "ls", "pm", "sp", "tb");
                                     $albums = 0;
@@ -159,9 +169,11 @@
                                 </svg></div>
                             <div class="px-3">
                             <?php 
-                                    $databaseDir = "database";
-                                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
-
+                                    $configFileName = "config.conf";
+                                    $configDBExtension = explode("|",file($configFileName)[0])[0];
+                                    $configNewBadgeText = explode("|",file($configFileName)[1])[0];
+                                    $configDBStartLine = explode("|",file($configFileName)[2])[0];
+                                    $configDBDir = explode("|",file($configFileName)[3])[0];
                                     $databaseFiles = array("tb");
                                     $albums = 0;
                                     $singles = 9; //will make this check from a database at a later date.
@@ -189,8 +201,11 @@
                                 </svg></div>
                             <div class="px-3">
                             <?php 
-                                    $databaseDir = "database";
-                                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
+                                    $configFileName = "config.conf";
+                                    $configDBExtension = explode("|",file($configFileName)[0])[0];
+                                    $configNewBadgeText = explode("|",file($configFileName)[1])[0];
+                                    $configDBStartLine = explode("|",file($configFileName)[2])[0];
+                                    $configDBDir = explode("|",file($configFileName)[3])[0];
                                     $databaseFiles = array("pm");
                                     $albums = 0;
                                     $singles = 2; //will make this check from a database at a later date.
@@ -212,1926 +227,480 @@
                 </div>
             </div>
         </section>
-        <section class="portfolio-block call-to-action border-bottom"  style="background: var(--bs-gray-100);">
-            <h1 id="albums" style="text-align: center;"><strong>Albums</strong></h1>
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center content"></div>
-            </div>
-            <div class="container py-4 py-xl-5" id="albums">
-                <div class="row mb-5">
-                    <div class="col-md-8 col-xl-6 text-center mx-auto">
-                        <h2>Paul McCartney<br>Albums</h2>
-                    </div>
-                </div>
-                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <?php
-                    //CONFIG--------------------//
-                    $type = "album"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "pm_album";
-                    $databaseDir  = "database";
-                    //--------------------------//
+<!-- END STATS SECTION -->
+<!-- START MAIN -->
+<?php
+//CONFIGURATION
+$sections = array("album:pm_album", "album:tb_album", "album:gh_album", "album:cs_album", "album:ls_album", "album:sp_album", "fav_singles_eps:fav_singles_eps", "other_singles_eps:other_singles_eps", "other:other", "wishlist:wishlist");
 
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
+$firstAlbum = true;
+$firstFav = true;
+$firstWishlist = true;
+$firstOther = true;
 
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
+$lastColour = "white";
 
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
+for ($s = 0; $s < count($sections); $s++){
+    $type = explode(":",$sections[$s])[0];
+    $databaseName = explode(":",$sections[$s])[1];
 
-                            $randomID = rand();
+    $configFileName = "config.conf";
+    $configDBExtension = explode("|",file($configFileName)[0])[0];
+    $configNewBadgeText = explode("|",file($configFileName)[1])[0];
+    $configDBStartLine = explode("|",file($configFileName)[2])[0];
+    $configDBDir = explode("|",file($configFileName)[3])[0];
+    $configCollectedText = explode("|",file($configFileName)[4])[0];
+    $configSectionTitleLine = explode("|",file($configFileName)[5])[0];
+    $configSectionDescriptionLine = explode("|",file($configFileName)[6])[0];
 
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
 
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
+    if ($type == "album"){
+        $fileDir = $configDBDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
+        $fileContent = file($fileDir);
+        $lines = count(file($fileDir));
         
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
+        $imgDir = $configDBDir . "/albums/" . $databaseName . "/";
         
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
+        $sectionTitle = $fileContent[$configSectionTitleLine];
+        $sectionDescription = $fileContent[$configSectionDescriptionLine];
+        if (str_contains($sectionDescription,"null")){
+            $sectionDescription = "";
+        }
+
+        //check section colour (grey vs white)
+        if ($lastColour == "white"){
+            echo "<section class='portfolio-block call-to-action border-bottom'  style='background: var(--bs-gray-100);'>\n";
+            $lastColour = "grey";
+        } else {
+            echo "<section class='portfolio-block call-to-action border-bottom'>\n";
+            $lastColour = "white";
+        }
         
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
+        //check if first section (first must have ID album for # links)
+        if ($firstAlbum == true){
+            $firstAlbum = false;
+            echo "<h1 id='albums' style='text-align: center;'><strong>Albums</strong></h1>\n";
+            echo "<div class='container'>\n";
+            echo "    <div class='d-flex justify-content-center align-items-center content'></div>\n";
+            echo "</div>\n";
+        }
+
+        echo "<div class='container py-4 py-xl-5'>\n";
+        echo "        <div class='row mb-5'>\n";
+        echo "            <div class='col-md-8 col-xl-6 text-center mx-auto'>\n";
+        echo "                <h2>" . $sectionTitle . "<br>Albums</h2>\n";
+        echo "                <h5 style='text-align: center;'>" . $sectionDescription . "</h5>\n";
+        echo "            </div>\n";
+        echo "       </div>\n";
+        echo "        <div class='row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3'>\n";
+
+
+        for ($n = $configDBStartLine; $n < $lines; $n++) {
+            $fileItems = explode(":",$fileContent[$n]);
+
+            $subtitle = $fileItems[0];
+            $title = $fileItems[1];
+            $description = $fileItems[2];
+            $identifier = $fileItems[3];
+            $mediaCondition = $fileItems[4];
+            $sleeveCondition = $fileItems[5];
+            $imageName = $fileItems[6];
+            $imageExtension = $fileItems[7];
+            $discogsID = $fileItems[8];
+            $newBool = $fileItems[9];
+            $numberImages = $fileItems[10];
+
+            $randomID = rand();
+
+            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&id=" . $n;
+
+            echo "<div class='col'>";
+            echo "    <div class='card'>";
+            
+            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
+            echo "<script>\n";
+            echo "function onHover" . $discogsID . $randomID . "()\n";
+            echo "{\n";
+            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
+            echo "}\n";
+
+            echo "function offHover" . $discogsID . $randomID . "()\n";
+            echo "{\n";
+            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
+            echo "}\n";
+            echo "</script>\n";
+            
+            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
+            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
+            if (str_contains($newBool, "t")){
+                echo "&nbsp&nbsp";
+                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
+            }
+            echo "</h6>";
+            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
+            echo "         </div>";
+            echo "     </div>";
+            echo "</div>";
+        } 
         
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
+            echo "</div>\n";
+            echo "    </div>\n";
+            echo "</section>\n";
+        } else if ($type == "fav_singles_eps")
+        {
+            $fileDir = $configDBDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
+            $fileContent = file($fileDir);
+            $lines = count(file($fileDir));
+            
+            $imgDir = $configDBDir . "/singles_eps/" . $databaseName . "/";
+            
+            $mainTitle = explode(":",file($configDBDir . "/singles_eps/singles_eps_section_database" . $configDBExtension)[0])[1];
+            $mainDescription = explode(":",file($configDBDir . "/singles_eps/singles_eps_section_database" . $configDBExtension)[1])[1];
+
+            $sectionTitle = $fileContent[$configSectionTitleLine];
+            $sectionDescription = $fileContent[$configSectionDescriptionLine];
+            if (str_contains($sectionDescription,"null")){
+                $sectionDescription = "";
+            }
+
+            //check section colour (grey vs white)
+            if ($lastColour == "white"){
+                echo "<section class='portfolio-block call-to-action border-bottom'  style='background: var(--bs-gray-100);'>\n";
+                $lastColour = "grey";
+            } else {
+                echo "<section class='portfolio-block call-to-action border-bottom'>\n";
+                $lastColour = "white";
+            }
+            
+            //check if first section (first must have ID favsingleseps for # links)
+            if ($firstFav == true){
+                $firstFav = false;
+                echo "<h1 id='favsingleseps' style='text-align: center;'><strong>" . $mainTitle . "</strong></h1>\n";
+                echo "<h5 style='text-align: center;'>" . $mainDescription . "</h5>\n";
+                echo "<div class='container'>\n";
+                echo "    <div class='d-flex justify-content-center align-items-center content'></div>\n";
+                echo "</div>\n";
+            }
+
+            echo "<div class='container py-4 py-xl-5'>\n";
+            echo "        <div class='row mb-5'>\n";
+            echo "            <div class='col-md-8 col-xl-6 text-center mx-auto'>\n";
+            echo "                <h2>" . $sectionTitle . "</h2>\n";
+            echo "                <h5 style='text-align: center;'>" . $sectionDescription . "</h5>\n";
+            echo "            </div>\n";
+            echo "       </div>\n";
+            echo "        <div class='row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3'>\n";
+
+
+            for ($n = $configDBStartLine; $n < $lines; $n++) {
+                $fileItems = explode(":",$fileContent[$n]);
+                $fileDir = $configDBDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
+                $fileContent = file($fileDir);
+                $lines = count(file($fileDir));
+
+                $imgDir = $configDBDir . "/singles_eps/" . $databaseName . "/";
+                
+                for ($n = $configDBStartLine; $n < $lines; $n++) {
+                    $fileItems = explode(":",$fileContent[$n]);
+
+                    $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&id=" . $n;
+
+                    $subtitle = $fileItems[0];
+                    $artist = $fileItems[1];
+                    $title = $fileItems[2];
+                    $description = $fileItems[3];
+                    $identifier = $fileItems[4];
+                    $mediaCondition = $fileItems[5];
+                    $sleeveCondition = $fileItems[6];
+                    $imageName = $fileItems[7];
+                    $imageExtension = $fileItems[8];
+                    $discogsID = $fileItems[9];
+                    $newBool = $fileItems[10];
+                    $numberImages = $fileItems[11];
+
+                    $randomID = rand();
+
+                    echo "<div class='col'>";
+                    echo "    <div class='card'>";
+                    
+                    echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
+                    echo "<script>\n";
+                    echo "function onHover" . $discogsID . $randomID . "()\n";
+                    echo "{\n";
+                    echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
+                    echo "}\n";
+
+                    echo "function offHover" . $discogsID . $randomID . "()\n";
+                    echo "{\n";
+                    echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
+                    echo "}\n";
+                    echo "</script>\n";
+                    
+                    echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
+                    echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
+                    if (str_contains($newBool, "t")){
+                        echo "&nbsp&nbsp";
+                        echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
                     }
-                    ?>
-                </div>
-            </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom">
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center content"></div>
-            </div>
-            <div class="container py-4 py-xl-5">
-                <div class="row mb-5">
-                    <div class="col-md-8 col-xl-6 text-center mx-auto">
-                        <h2>The Beatles<br>Albums<br></h2>
-                    </div>
-                </div>
-                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <?php
-                    //CONFIG--------------------//
-                    $type = "album"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "tb_album";
-                    $databaseDir  = "database";
-                    //--------------------------//
-
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
-
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
+                    echo "</h6>";
+                    echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
+                    echo "         </div>";
+                    echo "     </div>";
+                    echo "</div>";
+                }
+            
+            echo "</div>\n";
+        }
+    } else if ($type == "other_singles_eps"){
+        $fileDir = $configDBDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
+        $fileContent = file($fileDir);
+        $lines = count(file($fileDir));
         
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
+        $imgDir = $configDBDir . "/singles_eps/" . $databaseName . "/";
         
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
+        $mainTitle = explode(":",file($configDBDir . "/singles_eps/singles_eps_section_database" . $configDBExtension)[0])[1];
+        $mainDescription = explode(":",file($configDBDir . "/singles_eps/singles_eps_section_database" . $configDBExtension)[1])[1];
+
+        $sectionTitle = $fileContent[$configSectionTitleLine];
+        $sectionDescription = $fileContent[$configSectionDescriptionLine];
+        if (str_contains($sectionDescription,"null")){
+            $sectionDescription = "";
+        }
+
+
+        echo "<br><br><br><br>";
+        echo "            <div class='col-md-8 col-xl-6 text-center mx-auto'>\n";
+        echo "                <h2>" . $sectionTitle . "</h2>\n";
+        echo "                <h5 style='text-align: center;'>" . $sectionDescription . "</h5>\n";
+        echo "            </div><br>\n";
+
+        for ($n = $configDBStartLine; $n < $lines; $n++) {
+            $fileDir = $configDBDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
+            $fileContent = file($fileDir);
+            $lines = count(file($fileDir));
+
+            echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
+
+            for ($n = $configDBStartLine; $n < $lines; $n++) {
+                $fileItems = explode(":",$fileContent[$n]);
+
+                $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&id=" . $n;
+                
+                $artist = $fileItems[0];
+                $format = $fileItems[1];
+                $title = $fileItems[2];
+                $description = $fileItems[3];
+                $identifier = $fileItems[4];
+                $condition = $fileItems[5];
+
+                echo "<div class='col'>";
+                echo "    <div class='card'>";
+                echo "         <div class='card-body p-4'>";
+                echo "             <h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
+                echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
+                echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
+                echo "         </div>";
+                echo "     </div>";
+                echo "</div>";
+
+            }
+        }
         
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
+        echo "</div>\n";
+        echo "    </div>\n";
+        echo "</section>\n";
+    } else if ($type == "wishlist"){
+        $fileDir = $configDBDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
+        $fileContent = file($fileDir);
+        $lines = count(file($fileDir));
         
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom"  style="background: var(--bs-gray-100);">
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center content"></div>
-            </div>
-            <div class="container py-4 py-xl-5">
-                <div class="row mb-5">
-                    <div class="col-md-8 col-xl-6 text-center mx-auto">
-                        <h2>George Harrison<br>Albums</h2>
-                    </div>
-                </div>
-                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <?php
-                    //CONFIG--------------------//
-                    $type = "album"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "gh_album";
-                    $databaseDir  = "database";
-                    //--------------------------//
+        $imgDir = $configDBDir . "/wishlist/" . $databaseName . "/";
 
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
+        $sectionTitle = $fileContent[$configSectionTitleLine];
+        $sectionDescription = $fileContent[$configSectionDescriptionLine];
+        if (str_contains($sectionDescription,"null")){
+            $sectionDescription = "";
+        }
 
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
+        //check section colour (grey vs white)
+        if ($lastColour == "white"){
+            echo "<section class='portfolio-block call-to-action border-bottom'  style='background: var(--bs-gray-100);'>\n";
+            $lastColour = "grey";
+        } else {
+            echo "<section class='portfolio-block call-to-action border-bottom'>\n";
+            $lastColour = "white";
+        }
         
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
+        //check if first section (first must have ID favsingleseps for # links)
+        if ($firstWishlist == true){
+            $firstWishlist = false;
+            echo "<h1 id='wishlist' style='text-align: center;'><strong>" . $sectionTitle . "</strong></h1>\n";
+            echo "<h5 style='text-align: center;'>" . $sectionDescription . "</h5>\n";
+            echo "<div class='container'>\n";
+            echo "    <div class='d-flex justify-content-center align-items-center content'></div>\n";
+            echo "</div>\n";
+        }
+
+        echo "<div class='container py-4 py-xl-5'>\n";
+        echo "        <div class='row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3'>\n";
+
+        for ($n = $configDBStartLine; $n < $lines; $n++) {
+            $fileDir = $configDBDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
+            $fileContent = file($fileDir);
+            $lines = count(file($fileDir));
+
+            $imgDir = $configDBDir . "/wishlist/" . $databaseName . "/";
+            
+            for ($n = $configDBStartLine; $n < $lines; $n++) {
+                $fileItems = explode(":",$fileContent[$n]);
+
+                $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&id=" . $n;
+
+                $artist = $fileItems[0];
+                $subtitle = $fileItems[1];
+                $title = $fileItems[2];
+                $description = $fileItems[3];
+                $imageName = $fileItems[4];
+                $imageExtension = $fileItems[5];
+                $discogsID = $fileItems[6];
+                $newBool = $fileItems[7];
+
+                $randomID = rand();
+
+                echo "<div class='col'>";
+                echo "    <div class='card'>";
+
+                echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
+                echo "<script>\n";
+                echo "function onHover" . $discogsID . $randomID . "()\n";
+                echo "{\n";
+                echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
+                echo "}\n";
+
+                echo "function offHover" . $discogsID . $randomID . "()\n";
+                echo "{\n";
+                echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
+                echo "}\n";
+                echo "</script>\n";
+
+                echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
+                echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
+                if (str_contains($newBool, "t")){
+                    echo "&nbsp&nbsp";
+                    echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
+                }
+                echo "</h6>";
+                echo "             <p class='card-text'>" . $description . "</p>";
+                echo "         </div>";
+                echo "     </div>";
+                echo "</div>";
+            }
+        }
+        echo "</div>\n";
+        echo "    </div>\n";
+        echo "</section>\n";
+
+    } else if ($type == "other"){
+        $fileDir = $configDBDir . "/other/" . $databaseName . "_database" . $configDBExtension;
+        $fileContent = file($fileDir);
+        $lines = count(file($fileDir));
         
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
+        $imgDir = $configDBDir . "/other/" . $databaseName . "/";
+
+        $sectionTitle = $fileContent[$configSectionTitleLine];
+        $sectionDescription = $fileContent[$configSectionDescriptionLine];
+        if (str_contains($sectionDescription,"null")){
+            $sectionDescription = "";
+        }
+
+        //check section colour (grey vs white)
+        if ($lastColour == "white"){
+            echo "<section class='portfolio-block call-to-action border-bottom'  style='background: var(--bs-gray-100);'>\n";
+            $lastColour = "grey";
+        } else {
+            echo "<section class='portfolio-block call-to-action border-bottom'>\n";
+            $lastColour = "white";
+        }
         
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-        
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom">
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center content"></div>
-            </div>
-            <div class="container py-4 py-xl-5">
-                <div class="row mb-5">
-                    <div class="col-md-8 col-xl-6 text-center mx-auto">
-                        <h2>Cat Stevens<br>Albums</h2>
-                    </div>
-                </div>
-                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <?php
-                    //CONFIG--------------------//
-                    $type = "album"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "cs_album";
-                    $databaseDir  = "database";
-                    //--------------------------//
-
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
-
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
-        
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-        
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-        
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-        
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom"  style="background: var(--bs-gray-100);">
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center content"></div>
-            </div>
-            <div class="container py-4 py-xl-5">
-                <div class="row mb-5">
-                    <div class="col-md-8 col-xl-6 text-center mx-auto">
-                        <h2>The Lovin' Spoonful<br>Albums</h2>
-                    </div>
-                </div>
-                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <?php
-                    //CONFIG--------------------//
-                    $type = "album"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "ls_album";
-                    $databaseDir  = "database";
-                    //--------------------------//
-
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
-
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
-        
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-        
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-        
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-        
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom" >
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center content"></div>
-            </div>
-            <div class="container py-4 py-xl-5">
-                <div class="row mb-5">
-                    <div class="col-md-8 col-xl-6 text-center mx-auto">
-                        <h2>Sparks<br>Albums</h2>
-                    </div>
-                </div>
-                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <?php
-                    //CONFIG--------------------//
-                    $type = "album"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "sp_album";
-                    $databaseDir  = "database";
-                    //--------------------------//
-
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
-
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
-        
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-        
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-        
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-        
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom"  style="background: var(--bs-gray-100);">
-        <h1 id="favsingleseps" style="text-align: center;"><strong>My Favourite Singles & EPs</strong></h1>
-        <h5 style="text-align: center;">I couldn't possibly list all the singles/EPs as I have bought a few bulk lots of records, and only some of which I actually listen to regularly :)</h5>
-        <div class="container">
-            <div class="d-flex justify-content-center align-items-center content"></div>
-        </div>
-        <div class="container py-4 py-xl-5" id="albums-2">
-            <div class="row mb-5">
-                <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2><strong>Picture Sleeve Releases</strong></h2>
-                </div>
-            </div>
-            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-            <?php
-                    //CONFIG--------------------//
-                    $type = "fav_singles_eps"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "fav_singles_eps";
-                    $databaseDir  = "database";
-                    //--------------------------//
-
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
-
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
-        
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-        
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-        
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-        
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
-            </div>
-            <br><br><br><br>
-            <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2><strong>Other Releases</strong></h2>
-            </div>
-            <br>
-            <?php
-                    //CONFIG--------------------//
-                    $type = "other_singles_eps"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "other_singles_eps";
-                    $databaseDir  = "database";
-                    //--------------------------//
-
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
-
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
-        
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-        
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-        
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-        
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
-            </div>
-        </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom">
-            <h1 id="albums" style="text-align: center;"><strong>Wishlist</strong></h1>
-            <div class="container">
-                <div class="d-flex justify-content-center align-items-center content"></div>
-            </div>
-            <div class="container py-4 py-xl-5" id="wishlist">
-                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <?php
-                    //CONFIG--------------------//
-                    $type = "wishlist"; //Options: album, fav_singles_eps, other_singles_eps, wishlist
-                    $databaseName = "wishlist";
-                    $databaseDir  = "database";
-                    //--------------------------//
-
-                    $configDBExtension = explode(":",file($databaseDir . "/config.conf")[0])[0];
-                    $configNewBadgeText = explode(":",file($databaseDir . "/config.conf")[1])[0];
-                    $configDBStartLine = explode(":",file($databaseDir . "/config.conf")[2])[0];
-
-                    if ($type == "album"){
-                        $fileDir = $databaseDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-                        
-                        $imgDir = $databaseDir . "/albums/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-
-                            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&dbdir=" . $databaseDir . "&id=" . $n;
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        } 
-                    } else if ($type == "fav_singles_eps") {
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/singles_eps/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $subtitle = $fileItems[0];
-                            $title = $fileItems[1];
-                            $description = $fileItems[2];
-                            $identifier = $fileItems[3];
-                            $mediaCondition = $fileItems[4];
-                            $sleeveCondition = $fileItems[5];
-                            $imageName = $fileItems[6];
-                            $imageExtension = $fileItems[7];
-                            $discogsID = $fileItems[8];
-                            $newBool = $fileItems[9];
-                            $numberImages = $fileItems[10];
-
-                            $randomID = rand();
-    
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-    
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-                            
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    } else if ($type == "other_singles_eps"){
-                        $fileDir = $databaseDir . "/singles_eps/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        echo "<div class='row justify-content-center gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4'>";
-
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-                            
-                            $artist = $fileItems[0];
-                            $format = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $identifier = $fileItems[4];
-                            $condition = $fileItems[5];
-
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-                            echo "         <div class='card-body p-4'>";
-                            echo "             <h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . "</h6>";
-                            echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-
-                        }
-
-                        echo "</div>";
-                    } else if ($type == "wishlist"){
-                        $fileDir = $databaseDir . "/wishlist/" . $databaseName . "_database" . $configDBExtension;
-                        $fileContent = file($fileDir);
-                        $lines = count(file($fileDir));
-
-                        $imgDir = $databaseDir . "/wishlist/" . $databaseName . "/";
-                        
-                        for ($n = $configDBStartLine; $n < $lines; $n++) {
-                            $fileItems = explode(":",$fileContent[$n]);
-
-                            $artist = $fileItems[0];
-                            $subtitle = $fileItems[1];
-                            $title = $fileItems[2];
-                            $description = $fileItems[3];
-                            $imageName = $fileItems[4];
-                            $imageExtension = $fileItems[5];
-                            $discogsID = $fileItems[6];
-                            $newBool = $fileItems[7];
-
-                            $randomID = rand();
-        
-                            echo "<div class='col'>";
-                            echo "    <div class='card'>";
-        
-                            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
-                            echo "<script>\n";
-                            echo "function onHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
-                            echo "}\n";
-        
-                            echo "function offHover" . $discogsID . $randomID . "()\n";
-                            echo "{\n";
-                            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
-                            echo "}\n";
-                            echo "</script>\n";
-        
-                            echo "             <br><h4 class='card-title'><strong>" . $title . "</strong></h4>";
-                            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $subtitle;
-                            if (str_contains($newBool, "t")){
-                                echo "&nbsp&nbsp";
-                                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
-                            }
-                            echo "</h6>";
-                            echo "             <p class='card-text'>" . $description . "</p>";
-                            echo "             <a class='card-text' href='https://www.discogs.com/master/" . $discogsID . "' target='_blank'>Discogs ID: " . $discogsID . "</a>";
-                            echo "         </div>";
-                            echo "     </div>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer class="text-center py-4" style="background: var(--bs-gray-100);">
+        //check if first section (first must have ID favsingleseps for # links)
+        if ($firstOther == true){
+            $firstOther = false;
+            echo "<h1 id='other' style='text-align: center;'><strong>" . $sectionTitle . "</strong></h1>\n";
+            echo "<h5 style='text-align: center;'>" . $sectionDescription . "</h5>\n";
+            echo "<div class='container'>\n";
+            echo "    <div class='d-flex justify-content-center align-items-center content'></div>\n";
+            echo "</div>\n";
+        }
+
+        echo "<div class='container py-4 py-xl-5'>\n";
+        echo "        <div class='row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3'>\n";
+
+        for ($n = $configDBStartLine; $n < $lines; $n++) {
+            $fileItems = explode(":",$fileContent[$n]);
+
+            $artist = $fileItems[0];
+            $format = $fileItems[1];
+            $title = $fileItems[2];
+            $identifier = $fileItems[3];
+            $condition = $fileItems[4];
+            $imageName = $fileItems[5];
+            $imageExtension = $fileItems[6];
+            $onDiscogsBool = $fileItems[7];
+            $discogsID = $fileItems[8];
+            $newBool = $fileItems[9];
+
+            $randomID = rand();
+
+            $viewRecordLink = "viewrecord.php" . "?type=" . $type . "&db=" . $databaseName . "&id=" . $n;
+
+            echo "<div class='col'>";
+            echo "    <div class='card'>";
+            
+            echo "         <div class='card-body p-4'><img id='" . $discogsID . $randomID . "' class='rounded img-fluid d-block w-100 fit-cover' src='" . $imgDir . $imageName . "1" . $imageExtension . "' onmouseover='onHover" . $discogsID . $randomID . "();' onmouseout='offHover" . $discogsID . $randomID . "();'>";
+            echo "<script>\n";
+            echo "function onHover" . $discogsID . $randomID . "()\n";
+            echo "{\n";
+            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "2" . $imageExtension . "');\n";
+            echo "}\n";
+
+            echo "function offHover" . $discogsID . $randomID . "()\n";
+            echo "{\n";
+            echo "    $('#" . $discogsID . $randomID . "').attr('src', '" . $imgDir . $imageName . "1" . $imageExtension . "');\n";
+            echo "}\n";
+            echo "</script>\n";
+            
+            echo "             <br><h4 class='card-title'><strong><a class='link-dark' href='". $viewRecordLink . "'>" . $title . "</a></strong></h4>";
+            echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist . " - " . $format;
+            if (str_contains($newBool, "t")){
+                echo "&nbsp&nbsp";
+                echo "<span class='badge bg-info'>" . $configNewBadgeText . "</span>";
+            }
+            echo "</h6>";
+            echo "             <p class='card-text'>" . $identifier . "<br>Condition: " . $condition . "</p>";
+            echo "         </div>";
+            echo "     </div>";
+            echo "</div>";
+        }
+        echo "</div>\n";
+        echo "    </div>\n";
+        echo "</section>\n";
+    }
+} 
+//end
+
+?>
+
+</main>
+<!-- END MAIN -->
+<!-- FOOTER -->
+<?php
+//check section colour (grey vs white)
+if ($lastColour == "white"){
+    echo "<footer class='text-center py-4' style='background: var(--bs-gray-100);'>\n";
+} else {
+    echo "<footer class='text-center py-4'>\n";
+}
+?>
 
     <div class="col">
         <ul class="list-inline my-2">

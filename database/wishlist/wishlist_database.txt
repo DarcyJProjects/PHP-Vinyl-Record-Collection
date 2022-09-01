@@ -1,4 +1,6 @@
-ARTIST:SUBTITLE:TITLE:DESCRIPTION:IMAGENAME:extension:DISCOGS-ID:NEW?(t/f)
+ARTIST:SUBTITLE:TITLE:DESCRIPTION:IMAGENAME:extension:DISCOGS-ID:NEW?(t/f):number of images:
+Wishlist
+The releases I'm keeping an eye out for
 Paul McCartney:LP:Ram:Released 1971:ram:.jpg:92517:f:2:
 Paul McCartney:7" Single 45RPM:Say Say Say:Released 1983<br>I love the B Side song Ode To A Koala Bear:saysaysay:.jpg:14719:f:2:
 Paul McCartney:LP:Give My Regards to Broad Street:Released 1983:givemyregards:.jpg:93692:f:2:

@@ -1,2 +1,4 @@
-SUBTITLE:TITLE:DESCRIPTION:IDENTIFIER:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME:IMG_EXT:DISCOGS-ID:NEW?(t/f):N of Images:
-LP:Kimono My House:1974 German Release:Island Records – 87 818 IT:VG+:VG+:kimonomyhouse:.jpg:3592055:t:7:
+SUBTITLE:TITLE:DESCRIPTION:IDENTIFIER:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME:IMG_EXT:DISCOGS-ID:NEW?(t/f):N of Images:Date Added to Collection:
+Sparks
+null
+LP:Kimono My House:1974 German Release:Island Records – 87 818 IT:VG+:VG+:kimonomyhouse:.jpg:3592055:t:7:06/08/2022:

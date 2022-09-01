@@ -1,8 +1,10 @@
-SUBTITLE:TITLE:DESCRIPTION:IDENTIFIER:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME:IMG_EXT:DISCOGS-ID:NEW?(t/f):N of Images:
-Gatefold LP:Red Rose Speedway:1973 Stereo Australian Gatefold Release:Apple Records - PCTC 251:VG+:VG+:redrosespeedway:.jpg:5625229:f:5:
-Box Set:Flaming Pie:2020 Stereo Half Speed Master 180 Gram 2x Record Box Set:MPL/Capitol Records/Universal Music Group - 00602508617720:NM+:NM+:flamingpie:.jpg:15701948:f:10:
-LP:Tug Of War:1982 Stereo Australian Release:Parlophone/MPL - PCTP 259:VG+:NM:tugofwar:.jpg:15295699:f:6:
-LP:Pipes Of Peace:1983 Stereo Australian Gatefold Release:Parlophone/MPL - P.165230:VG+:VG+:pipesofpeace:.jpg:4754432:f:8:
-LP:Wings At The Speed Of Sound:1976 Stereo Australian Release:Capitol/MPL - ?????:VG++:VG+:wingsatthespeedofsound:.jpg:???????:t:6:
-LP:Band On The Run:1973 Stereo Australian Release:Apple Records - PASA 10007:VG+:VG+:bandontherun:.jpg:2151700:f:6:
-Compilation Album:Wings Greatest:1978 Stereo Australian Release:Capitol Records - P.256:NM-:VG+:wingsgreatest:.jpg:9401282:f:4:
+SUBTITLE:TITLE:DESCRIPTION:IDENTIFIER:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME:IMG_EXT:DISCOGS-ID:NEW?(t/f):N of Images:Date Added to Collection:
+Paul McCartney
+null
+Gatefold LP:Red Rose Speedway:1973 Stereo Australian Gatefold Release:Apple Records - PCTC 251:VG+:VG+:redrosespeedway:.jpg:5625229:f:5:28/03/2022:
+Box Set:Flaming Pie:2020 Stereo Half Speed Master 180 Gram 2x Record Box Set:MPL/Capitol Records/Universal Music Group - 00602508617720:NM+:NM+:flamingpie:.jpg:15701948:f:10:13/04/2022:
+LP:Tug Of War:1982 Stereo Australian Release:Parlophone/MPL - PCTP 259:VG+:NM:tugofwar:.jpg:15295699:f:6:July/August 2022:
+LP:Pipes Of Peace:1983 Stereo Australian Gatefold Release:Parlophone/MPL - P.165230:VG+:VG+:pipesofpeace:.jpg:4754432:f:8:05/04/2022:
+LP:Wings At The Speed Of Sound:1976 Stereo Australian Release:Capitol/MPL - ?????:VG++:VG+:wingsatthespeedofsound:.jpg:???????:t:6:27/08/2022:
+LP:Band On The Run:1973 Stereo Australian Release:Apple Records - PASA 10007:VG+:VG+:bandontherun:.jpg:2151700:f:6:06/04/2022:
+Compilation Album:Wings Greatest:1978 Stereo Australian Release:Capitol Records - P.256:NM-:VG+:wingsgreatest:.jpg:9401282:f:4:28/03/2022:
