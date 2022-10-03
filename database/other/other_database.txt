@@ -1,7 +1,7 @@
 ARTIST:FORMAT:TITLE:IDENTIFIER:CONDITION:IMAGENAME:IMAGEEXTENSION:OnDiscogs? (t/f):DISCOGSID:new?(t/f):No. of Images:Collection Date:
 Other Formats
 The other things I've collected that are related to music such as VHS tapes & DVDs :)
-The Beatles:VHS:A Hard Days Night:~~~~~:VG++:tb_aharddaysnight_vhs:.jpg:f:~~~~~~:f:1:30/06/2022:
-The Beatles:VHS:Help!:~~~~~:VG++:tb_help_vhs:.jpg:f:~~~~~~:f:1:30/06/2022:
-The Beatles:DVD:Yellow Submarine:~~~~~:NM:tb_yellowsubmarine_dvd:.jpg:f:~~~~~~:f:1:July/August 2022:
-The Beatles:Blu-Ray:Eight Days A Week:~~~~~:NM & M (2 in collection):tb_eightdaysaweek_blu-ray:.webp:f:~~~~~~:f:1:July/August 2022:
+The Beatles:VHS:A Hard Days Night:1995 PolyGram Video - 5 014138 065096:VG++:tb_aharddaysnight_vhs:.jpg:f:000000:f:4:30/06/2022:
+The Beatles:VHS:Help!:1995 PolyGram Video - 5 014138 065089:VG++:tb_help_vhs:.jpg:f:000000:f:4:30/06/2022:
+The Beatles:DVD:Yellow Submarine:27616-7508-2 - ISBN 0-7928-4125-5:NM:tb_yellowsubmarine_dvd:.jpg:f:000000:f:4:July/August 2022:
+The Beatles:Blu-Ray:Eight Days A Week:9 317731 130571:NM & M (2 in collection):tb_eightdaysaweek_blu-ray:.jpg:f:000000:f:3:July/August 2022:

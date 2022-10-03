@@ -30,8 +30,8 @@
                     <li class="nav-item"><a class="nav-link active" href="#stats">Stats</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#albums">Albums</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#favsingleseps">Fav Singles/EPs</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#other">Other Formats</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#wishlist">Wishlist</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#other">Other Formats</a></li>
                 </ul>
             </div>
         </div>
@@ -45,7 +45,7 @@
                     <p>Hello! Here's the page I use to keep track of my vinyl record collection.</p>
                     <div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>New Features!</strong>  For albums, you can now click on the title to open a new page to view all it's images!<br>You can also now hover over images on the main page to see a secondary image!<br>Date collected is now added for all albums! (Visible on the secondary page for the releases)
+                        <strong>New Features!</strong>  For albums, you can now click on the title to open a new page to view all it's images!<br>You can also now hover over images on the main page to see a secondary image!<br>Date collected is now added for all albums! (Visible on the secondary page for the releases)<br>Other format section added as well :)
                     </div>
                     </div>
                     <!--<img src="assets/img/paulmccartney_banner.jpg" width="500">-->
@@ -231,7 +231,7 @@
 <!-- START MAIN -->
 <?php
 //CONFIGURATION
-$sections = array("album:pm_album", "album:tb_album", "album:gh_album", "album:cs_album", "album:ls_album", "album:sp_album", "fav_singles_eps:fav_singles_eps", "other_singles_eps:other_singles_eps", "other:other", "wishlist:wishlist");
+$sections = array("album:pm_album", "album:tb_album", "album:gh_album", "album:cs_album", "album:ls_album", "album:sp_album", "album:le_album", "fav_singles_eps:fav_singles_eps", "other_singles_eps:other_singles_eps", "wishlist:wishlist",  "other:other");
 
 $firstAlbum = true;
 $firstFav = true;

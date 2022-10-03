@@ -28,8 +28,8 @@
                     <li class="nav-item"><a class="nav-link active" href="index.php#stats">Stats</a></li>
                     <li class="nav-item"><a class="nav-link active" href="index.php#albums">Albums</a></li>
                     <li class="nav-item"><a class="nav-link active" href="index.php#favsingleseps">Fav Singles/EPs</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="index.php#other">Other Formats</a></li>
                     <li class="nav-item"><a class="nav-link active" href="index.php#wishlist">Wishlist</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.php#other">Other Formats</a></li>
                 </ul>
             </div>
         </div>
@@ -189,8 +189,8 @@
                     }
                     echo "</h6>";
                     echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                    echo "<span class='badge bg-primary'>" . $configCollectedText . $collectionDate . "</span><br><br>";
-                    echo "             <a class='btn btn-success' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
+                    echo "<span class='badge' style='background-color: #009ef2; color: #fff;'>" . $configCollectedText . $collectionDate . "</span><br><br>";
+                    echo "             <a class='btn' style='background-color: #1d995f; color: #fff;' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
                     echo "         </div>";
                     echo "     </div>";
                     echo "</div>";
@@ -268,8 +268,8 @@
                     }
                     echo "</h6>";
                     echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $identifier . "<br>Media Condition: " . $mediaCondition . "<br>Sleeve Condition: " . $sleeveCondition . "</p>";
-                    echo "<span class='badge bg-primary'>" . $configCollectedText . $collectionDate . "</span><br><br>";
-                    echo "             <a class='btn btn-success' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
+                    echo "<span class='badge' style='background-color: #009ef2; color: #fff;'>" . $configCollectedText . $collectionDate . "</span><br><br>";
+                    echo "             <a class='btn' style='background-color: #1d995f; color: #fff;' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
                     echo "         </div>";
                     echo "     </div>";
                     echo "</div>";
@@ -341,8 +341,8 @@
                     echo "             <h6 class='text-muted card-subtitle mb-2'>" . $artist;
                     echo "</h6>";
                     echo "             <p class='card-text'><strong>" . $description . "</strong><br>" . $format . "<br>" . $identifier . "<br>Condition: " . $condition . "</p>";
-                    echo "<span class='badge bg-primary'>" . $configCollectedText . $collectionDate . "</span><br><br>";
-                    echo "             <a class='btn btn-success' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
+                    echo "<span class='badge' style='background-color: #009ef2; color: #fff;'>" . $configCollectedText . $collectionDate . "</span><br><br>";
+                    echo "             <a class='btn' style='background-color: #1d995f; color: #fff;' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
                     echo "         </div>";
                     echo "     </div>";
                     echo "</div>";
@@ -416,9 +416,9 @@
                     }
                     echo "</h6>";
                     echo "             <p class='card-text'><strong>" . $description . "</strong>" . "</p>";
-                    echo "<span class='badge bg-warning'>" . "Wishlist Item" . "</span>";
+                    echo "<span class='badge' style='background-color: #ffc907; color: #fff;'>" . "Wishlist Item" . "</span>";
                     echo "<br><br>";
-                    echo "             <a class='btn btn-success' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
+                    echo "             <a class='btn' style='background-color: #1d995f; color: #fff;' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
                     echo "         </div>";
                     echo "     </div>";
                     echo "</div>";
@@ -497,7 +497,7 @@
                     echo "             <p class='card-text'>" . $identifier . "<br>Condition: " . $condition . "</p>";
                     echo "<span class='badge bg-primary'>" . $configCollectedText . $collectionDate . "</span><br><br>";
                     if (str_contains($onDiscogsBool,"t")){
-                        echo "             <a class='btn btn-success' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
+                        echo "             <a class='btn' style='background-color: #1d995f; color: #fff;' href='https://www.discogs.com/release/" . $discogsID . "' target='_blank' role='button'>View on Discogs</a>";
                     } else {
                         echo "             <a class='btn btn-danger' target='_blank' role='button'>Unavailable on Discogs</a>";
                     }
