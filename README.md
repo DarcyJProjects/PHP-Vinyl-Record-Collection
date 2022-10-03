@@ -1,8 +1,14 @@
-# Darcy's Record Collection
-A simple record collection webpage made with Bootstrap 5.1 & Custom PHP Scripts.<br>
-__This isn't intended for other people to just drag and drop onto their own webserver, this is purely so I can track my changes - but of course, feel free to edit and adapt this if you please to do so: all I'm saying is that it might take a bit of fiddling around with to get working correctly.__
+![Darcy's Records Collection](https://raw.githubusercontent.com/DarcyJProjects/PHP-Vinyl-Record-Collection/main/assets/img/menubar.png)
+<br>
+A simple record collection webpage made with Bootstrap 5.1 and Custom JS & PHP Scripts.<br><br>
+All information (sections, items/releases in these sections, item/release information and images) is added from multiple "database" type files in specific folders. It's a bit silly, a little inefficient, and can be annoying, but it was fun to make as I learnt a lot and hey, it still works (most of the time...)!<br><br>
+__Note: PHP v8 or later REQUIRED.__<br>
+__Tested and Working on PHP v8.1.11__<br><br>
+__This isn't intended for other people to just drag and drop onto their own webserver; this is really just so I can track my changes - but of course: feel free to edit and adapt this if you do please... all I'm saying is that it might take a bit of fiddling around with to get working correctly.__
 <br><br>
-_Note: The majority of the images included are not mine! They are only included for __educational purposes__ only in order to allow others to understand how this works better._
+__If you do deploy or adapt this, I'd love to know! Please send me an email (see note below) or message me on Discord (Darcy#4523)__
+<br><br>
+_Note: The majority of the images included are not mine! They are only included for __educational purposes__ only in order to allow others to understand how this works better. If you have any issues with this please email me: <mailto:contactdarcy@darcyjprojects.xyz>._
 
 ## __Hosted Site:__
 Please give the webpage some time to load!<br>
@@ -24,3 +30,5 @@ https://records.darcyjprojects.xyz
 <br>
 ### __viewrecord.php__ Demo Screenshot (Outdated):
 ![https://records.darcyjprojects.xyz/assets/img](https://raw.githubusercontent.com/DarcyJProjects/PHP-Vinyl-Record-Collection/main/assets/img/demo_viewingrecord_01092022_1.png)
+<br><br>
+Thanks for viewing, I hope this has been helpful! :)
