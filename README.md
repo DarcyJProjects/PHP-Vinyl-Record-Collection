@@ -3,7 +3,7 @@
 A simple record collection webpage made with Bootstrap 5.1 & Custom PHP Scripts.<br>
 __This isn't intended for other people to just drag and drop onto their own webserver, this is purely so I can track my changes - but of course, feel free to edit and adapt this if you please to do so: all I'm saying is that it might take a bit of fiddling around with to get working correctly.__
 <br><br>
-_Note: The majority of the images included are not mine! They are only included for __educational purposes__ only in order to allow others to understand how this works better._
+_Note: The majority of the images included are not mine! They are only included for __educational purposes__ only in order to allow others to understand how this works better. If you have any issues with this please email me: ![contactdarcy@darcyjprojects.xyz](mailto:contactdarcy@darcyjprojects.xyz)_
 
 ## __Hosted Site:__
 Please give the webpage some time to load!<br>
