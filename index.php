@@ -144,7 +144,7 @@
                                     echo "</h2>";
                                 ?>
                                 <!--<h2 class="fw-bold mb-0">24</h2>-->
-                                <p class="mb-0">Albums)</p>
+                                <p class="mb-0">Albums</p>
                             </div>
                         </div>
                     </div>
