@@ -1,6 +1,7 @@
 ![Darcy's Records Collection](https://raw.githubusercontent.com/DarcyJProjects/PHP-Vinyl-Record-Collection/main/assets/img/menubar.png)
 <br>
 A simple record collection webpage made with Bootstrap 5.1 and Custom JS & PHP Scripts.<br><br>
+__PHP v8 or later REQUIRED__
 __This isn't intended for other people to just drag and drop onto their own webserver; this is really just so I can track my changes - but of course: feel free to edit and adapt this if you do please... all I'm saying is that it might take a bit of fiddling around with to get working correctly.__
 <br><br>
 __If you do deploy or adapt this, I'd love to know! Please send me an email (see note below) or message me on Discord (Darcy#4523)__
