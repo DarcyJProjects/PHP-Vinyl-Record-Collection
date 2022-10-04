@@ -40,7 +40,7 @@
     <main class="page lanidng-page" id="home">
         <section class="portfolio-block block-intro">
             <div class="container">
-                <div class="avatar" style="background: url(&quot;assets/img/avatars/avatar.jpg&quot;);"></div>
+                <div class="avatar" style="background: url('assets/img/avatars/avatar.jpg'); background-size: cover;"></div>
                 <div class="about-me">
                     <p>Hello! Here's the page I use to keep track of my vinyl record collection.</p>
                     <div class="alert alert-success alert-dismissible">
