@@ -2,6 +2,7 @@ SUBTITLE:TITLE:DESCRIPTION:IDENTIFIER:MEDIA CONDITION:SLEEVE CONDITION:IMAGENAME
 The Beatles
 null
 LP:Rubber Soul:1970s-1980s Stereo UK Release:Apple Records - PCS 3075:NM:NM-:rubbersoul:.jpg:8299179:f:6:?????GIFT:
+LP:Help!:1980s? Stereo UK Release:Parlophone – PCS 3071:VG++:VG++:help:.jpg:24755867:t:9:08/10/2022 - Witchcliffe Record Store:
 LP:A Hard Day's Night:1969 Stereo Australian Release:Parlophone - PCSO 3058:NM:VG+:aharddaysnight:.jpg:5964339:f:3:02/06/2021:
 CD Box Set:The Beatles:2009 European Release:Apple Records - 5099969944901:NM:NM:cdboxset:.jpg:1919340:f:1:June/July 2022:
 Compilation Album:1962-1966 (AKA. The Red Album):1979 Stereo Australian Release:Apple Records - PCSO 7171/2:VG+:VG+:theredalbum:.jpg:11812091:f:11:??????GIFT:
