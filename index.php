@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+<?php
+//CONFIGURAITON FOR SECTIONS:-------------------------------
+$sections = array("album:pm_album", "album:tb_album", "album:gh_album", "album:cs_album", "album:ls_album", "album:sp_album", "album:le_album", "fav_singles_eps:fav_singles_eps", "other_singles_eps:other_singles_eps", "wishlist:wishlist",  "other:other");
+//----------------------------------------------------------
+
+//The only other configuration you need to do is in the stats section for those php scripts (they're separate to this).
+
+
+//Load Config - Don't edit unless you need to---------------
+$configFileName = "config.conf";
+$configDBExtension = explode("|",file($configFileName)[0])[0];
+$configNewBadgeText = explode("|",file($configFileName)[1])[0];
+$configDBStartLine = explode("|",file($configFileName)[2])[0];
+$configDBDir = explode("|",file($configFileName)[3])[0];
+$configCollectedText = explode("|",file($configFileName)[4])[0];
+$configSectionTitleLine = explode("|",file($configFileName)[5])[0];
+$configSectionDescriptionLine = explode("|",file($configFileName)[6])[0];
+//-----------------------------------------------------------
+?>
+
+
 <html>
 <!-- START HEAD -->
 <head>
@@ -123,12 +144,6 @@
                                 </svg></div>
                             <div class="px-3">
                                 <?php 
-                                    $configFileName = "config.conf";
-                                    $configDBExtension = explode("|",file($configFileName)[0])[0];
-                                    $configNewBadgeText = explode("|",file($configFileName)[1])[0];
-                                    $configDBStartLine = explode("|",file($configFileName)[2])[0];
-                                    $configDBDir = explode("|",file($configFileName)[3])[0];
-
                                     $databaseFiles = array("cs", "gh", "ls", "pm", "sp", "tb");
                                     $albums = 0;
 
@@ -169,11 +184,6 @@
                                 </svg></div>
                             <div class="px-3">
                             <?php 
-                                    $configFileName = "config.conf";
-                                    $configDBExtension = explode("|",file($configFileName)[0])[0];
-                                    $configNewBadgeText = explode("|",file($configFileName)[1])[0];
-                                    $configDBStartLine = explode("|",file($configFileName)[2])[0];
-                                    $configDBDir = explode("|",file($configFileName)[3])[0];
                                     $databaseFiles = array("tb");
                                     $albums = 0;
                                     $singles = 9; //will make this check from a database at a later date.
@@ -201,12 +211,7 @@
                                 </svg></div>
                             <div class="px-3">
                             <?php 
-                                    $configFileName = "config.conf";
-                                    $configDBExtension = explode("|",file($configFileName)[0])[0];
-                                    $configNewBadgeText = explode("|",file($configFileName)[1])[0];
-                                    $configDBStartLine = explode("|",file($configFileName)[2])[0];
-                                    $configDBDir = explode("|",file($configFileName)[3])[0];
-                                    $databaseFiles = array("pm");
+                                     $databaseFiles = array("pm");
                                     $albums = 0;
                                     $singles = 2; //will make this check from a database at a later date.
                                     for ($i = 0; $i < count($databaseFiles); $i++)
@@ -230,9 +235,6 @@
 <!-- END STATS SECTION -->
 <!-- START MAIN -->
 <?php
-//CONFIGURATION
-$sections = array("album:pm_album", "album:tb_album", "album:gh_album", "album:cs_album", "album:ls_album", "album:sp_album", "album:le_album", "fav_singles_eps:fav_singles_eps", "other_singles_eps:other_singles_eps", "wishlist:wishlist",  "other:other");
-
 $firstAlbum = true;
 $firstFav = true;
 $firstWishlist = true;
@@ -243,16 +245,6 @@ $lastColour = "white";
 for ($s = 0; $s < count($sections); $s++){
     $type = explode(":",$sections[$s])[0];
     $databaseName = explode(":",$sections[$s])[1];
-
-    $configFileName = "config.conf";
-    $configDBExtension = explode("|",file($configFileName)[0])[0];
-    $configNewBadgeText = explode("|",file($configFileName)[1])[0];
-    $configDBStartLine = explode("|",file($configFileName)[2])[0];
-    $configDBDir = explode("|",file($configFileName)[3])[0];
-    $configCollectedText = explode("|",file($configFileName)[4])[0];
-    $configSectionTitleLine = explode("|",file($configFileName)[5])[0];
-    $configSectionDescriptionLine = explode("|",file($configFileName)[6])[0];
-
 
     if ($type == "album"){
         $fileDir = $configDBDir . "/albums/" . $databaseName . "_database" . $configDBExtension;
